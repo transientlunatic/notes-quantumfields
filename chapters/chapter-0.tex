@@ -1,16 +1,294 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % CHAPTER 0                %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Quantum Mechanics Primer %
+% Special Relativity       %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Quantum mechanics is a framework for describing physics in terms of
-wavefunctions, which encode all of the physical properties of a
-system. An observable of a system---a property which can be
-measured---is described by the operation of a Hermitian operator on
-the wavefunction. An observation corresponds to a specific eigenvalue
-of the operator corresponding to the observable.
+Special relativity is the extension of classical mechanics to
+extremely high energy situations, and is based around just two axioms.
 
-In classical mechanics all observables can be measured to infinite
-precision, but in quantum mechanics there is a limit to the precision
-at which different variables can be simultaneously measured.
+\begin{definition}[Event]
+  An event is something which happens at a specific place at a
+  particular instant in time.
+\end{definition}
+
+\begin{definition}[Inertial Reference Frame]
+  An inertial reference frame is a means of assigning a position to an
+  event. They have no acceleration, such that an inertial reference
+  fram is a reference frame with respect to which Newton's Second Law
+  holds.
+\end{definition}
+
+\subsection{The axioms of Special Relativity}
+\label{sec:sraxiom}
+
+\begin{enumerate}
+\item All inertial reference frames are equivalent for the performance of all physical experiments.
+\item The speed of light has the same, constant value in all reference frames.
+\end{enumerate}
+The first axiom is more commonly known as the \emph{principle of relativity}.
+
+\subsection{Minkowski Diagrams}
+\label{sec:minkdiag}
+
+Any event can be described by four coordinates, $(t;x,y,z)$, but, by
+choosing an appropriate reference frame we can describe this with just
+two coordinates, $(t;x)$; a diagram of this situation is shown in
+figure \ref{fig:minksimple}.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=1.5]
+\fill [muted-blue] (.5, .5) circle (0.05);
+\draw[help lines, ->] (-1,-1) -- (1.7,-1) node [below] {space, $x$};
+\draw[help lines, ->] (-1, -1) -- (-1, 1.2) node [right] {time, $t$};
+\end{tikzpicture}
+\caption{An event on a Minkowski diagram.}
+\label{fig:minksimple}
+\end{figure}
+
+\subsection{Invariant Interval}
+\label{sec:invint}
+
+In Euclidean space there is a concept of \emph{distance} which is
+invariant; $x^2 + y^2 + z^2$ is the same under all transformations.
+In spacetime there is a generalisation of this concept in the
+\emph{invariant interval}:
+\begin{equation}
+  \label{eq:invariantinter}
+  s^2 = \Delta t^2 - \Delta x^2
+\end{equation}
+The value of $s^2$ provides a simplified understanding of causality.
+\begin{itemize}
+\item $s^2 > 0$---time-like separation.
+\item $s^2 = 0$---null separation (light-like).
+\item $s^2 < 0$---space-like separation.
+\end{itemize}
+
+\begin{figure} \centering
+\begin{tikzpicture}[scale=1.7]
+\draw (-1,-1) -- (1,1) node [above] {$s^2 = 0$};
+\fill [muted-orange, opacity=0.4] (-1,-1) -- (1,1) -- (-1,1) --cycle;
+\draw (-.5,0) node {$s^2 > 0$};
+\fill [muted-green, opacity=0.4] (-1,-1) -- (1,-1) -- (1,1) --cycle;
+\draw (.5,0) node {$s^2 < 0$};
+\draw[help lines, ->] (-1,-1) -- (1.7,-1) node [below] {space, $x$};
+\draw[help lines, ->] (-1, -1) -- (-1, 1.2) node [right] {time, $t$};
+\end{tikzpicture}
+\caption{An event on a Minkowski diagram.}
+\label{fig:minksimple}
+\end{figure}
+
+\subsection{Lorentz Transformations}
+\label{sec:lorentz}
+
+Consider two frames moving relative to one another, $S$ and
+$S^\prime$. The frames are in standard configuration, i.e.\ an event
+in $S$ at $(0,0)$ also occurs at $(0,0)$ in $S^\prime$. To convert
+from an event occuring in $S$ to one in $S^\prime$ we use a Lorentz
+transform. These have the form
+\begin{subequations}
+\begin{align}
+  x^\prime &= x \cosh \phi - t \sinh \phi \\
+t^\prime &= -x \sinh \phi + t \cosh \phi
+\end{align}
+\end{subequations}
+and with 
+\[ \phi(v) = \tanh[-1](v) \]
+These can also be written
+\begin{subequations}
+  \begin{align}
+    t^\prime &= \gamma (t-vx) \\
+    x^\prime &= \gamma (x-vt)
+  \end{align}
+\end{subequations}
+\begin{subequations}
+  \begin{align}
+    t &= \gamma (t^\prime + v x^\prime) \\
+    x &= \gamma (x^\prime + v t^\prime)
+  \end{align}
+\end{subequations}
+
+\subsection{Adding velocities}
+\label{sec:addingvel}
+
+Since $e^{\pm \phi} = \cosh(\phi) \pm \sinh(\phi)$,
+\begin{subequations}
+  \begin{align}
+    t^\prime - x^\prime &= e^{\phi} (t-x) \\
+    t^\prime + x^\prime &= e^{-\phi} (t+x)
+  \end{align}
+\end{subequations}
+
+\subsection{Proper Time}
+\label{sec:proper-time}
+
+In the frame $S$ there are events at $(0,0)$ and $(t,x)$. A clock is
+moving at a constant speed $v$, so that it is present at both
+events. Pick $S^{\prime \prime}$, the clock's rest frame; $t^{\prime
+  \prime}$ is thus the reading on the clock. This is denoted $\tau$,
+the proper time. In any other frame in standard configuration we can then write
+\begin{equation}
+  \label{eq:1}
+  \tau = \gamma(t-vx)
+\end{equation}
+The proper time will be agreed upon by all observers, and as such is a
+Lorentz scalar. Since the velocity is $v = \frac{x}{t}$,
+\[ t^2 - x^2 = \tau^2 = t^{\prime 2} - x^{\prime 2} \]
+
+\subsection{Four-vectors}
+\label{sec:four-vectors}
+
+In $4$-dimensional spacetime the prototype displacement vector has the form
+\[ \qty( \Delta t , \Delta x, \Delta y, \Delta z ) \]
+and the transformation from one $4$-vector to another is 
+\begin{equation}
+  \label{eq:2}
+  \begin{bmatrix}
+    \Delta t \\ \Delta x \\ \Delta y \\ \Delta z
+  \end{bmatrix}
+=
+\begin{bmatrix}
+  \gamma & + \gamma v & 0 & 0 \\
++ \gamma v & \gamma &0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+  \Delta t^{\prime} \\ \Delta x^{\prime} \\ \Delta y^{\prime} \\ \Delta z^{\prime}
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+  \label{eq:2}
+\begin{bmatrix}
+  \Delta t^{\prime} \\ \Delta x^{\prime} \\ \Delta y^{\prime} \\ \Delta z^{\prime}
+\end{bmatrix}
+=
+\begin{bmatrix}
+  \gamma & - \gamma v & 0 & 0 \\
+- \gamma v & \gamma &0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+  \begin{bmatrix}
+    \Delta t \\ \Delta x \\ \Delta y \\ \Delta z
+  \end{bmatrix}
+\end{equation}
+
+It is more normal to denote each component of the 4-vector as $x^n$,
+$n \in \{0,1,2,3 \}$, or collectively, $x^{\mu}$.
+
+\subsection{Four-vector inner products}
+\label{sec:four-vector-inner}
+
+The inner product of two four-vectors is somewhat less straightforward
+that a three-vector scalar product.
+
+\begin{definition}[Four-vector inner product]
+  \begin{equation}
+    \label{eq:3}
+    \braket{A}{B} = \sum_{\mu, \nu} \eta_{\mu \nu} A^{\mu} B^{\nu}
+  \end{equation}
+  for $\eta_{\mu \nu} = \diag(1, -1, -1, -1)$ which is the metric
+  tensor for a non-accelerating reference frame.
+\end{definition}
+
+\subsection{Velocity and Acceleration Vectors}
+\label{sec:veloc-accel-vect}
+
+The displacement 4-vector, $\Delta x^{\mu}$, transforms properly, as
+does the infinitessimal displacement, $\dd{x^{\mu}}$. The proper time,
+$\tau$, is the Lorentz scalar, so we can divide each component of
+$\dd{x^{\mu}}$ by $\dd{\tau}$ and get a new vector, the velocity,
+\[ U = \qty( \dv{x^0}{\tau}, \dv{x^1}{\tau}, \dv{x^2}{\tau}, \dv{x^3}{\tau} ) \]
+and likewise, the acceleration,
+\[ A = \qty( \dv[2]{x^0}{\tau}, \dv[2]{x^1}{\tau}, \dv[2]{x^2}{\tau}, \dv[2]{x^3}{\tau} ) \]
+
+Now, since $t = \gamma \tau$,
+\[ U^{\mu} = \qty( \gamma c , \gamma \vec{v} ) \]
+
+
+\subsection{Momentum}
+\label{sec:momentum}
+
+Given the four-velocity we can find a four-momentum as well.
+\[ p^{\mu} = (\gamma m c, \gamma m \vec{v} ) = \qty(\frac{E}{c}, \vec{p} )\]
+The norm of any four-vector will be Lorentz invariant, so 
+\[ p^2 = \frac{E^2}{c^2} - \vec{p}^2 \]
+In the particle's rest frame,
+\[ p^{\mu} = (mc, \vec{0}) \therefore p^2 = m^2 c^2 \]
+and since it is Lorentz invariant, it must be the case in all frames.
+Thus
+\[ \frac{E^2}{c^2} - \vec{p}^2 = m^2 c^2  \quad \therefore \quad E^2 - \vec{p}^2 c^2 = m^2 c^4 \]
+
+\subsection{Invariant Mass}
+\label{sec:invariant-mass}
+
+In scattering interactions the \emph{invariant mass} is a useful
+quantity. Given a pair of particles with momenta $p_1$ and $p_2$, the
+squared invariant mass, when working in natural units, is
+\begin{align}
+m_{12}^2  & = (p_1 + p_2)^2 \nonumber                                                                      \\
+         & = (E_1+E_2, \vec{p}_1 + \vec{p}_2)^2 \nonumber                                                 \\
+         & = (E_1+E_2)^2 - (\vec{p}_1 + \vec{p}_2) \cdot (\vec{p}_1 + \vec{p}_2) \nonumber                \\
+         & = E_1^2 - \vec{p}_1^2 + E_2^2 - \vec{p}_2^2 + 2E_1 E_2 - 2 \vec{p}_1 \cdot \vec{p}_2 \nonumber \\
+         & = m_1^2 + m_2^2 + 2(E_1 E_2 - \vec{p}_1 \cdot \vec{p}_2) 
+\end{align}
+
+\begin{example}[Two particles, one at rest]
+  $\vec{p}_2 = \vec{0}$, and $E_2 = m_2$. Thus
+\[ m_{12}^2 = m_1^2 + m_2^2 + 2 m_2 E_1 \]
+\end{example}
+\begin{example}[The Centre of Momentum Frame]
+  The total 3-mometum in this frame is $\vec{0}$, so,
+  \[ \vec{p}^{\text{com}}_1 = - \vec{p}^{\text{com}}_2 \]
+then
+\[ m_{12}^2 = \qty( E_1^{\text{com}} + E_2^{\text{com}} )^2 \]
+\end{example}
+Thus, the invariant mass is the total energy in the centre of mass
+frame.
+
+\subsection{Particle Collisions}
+\label{sec:particle-collisions}
+
+The vast majority of information about fundamental particles comes
+from collision experiments. There are two types of collider used in physics,
+\begin{description}
+\item[Fixed Target] The target is at rest, while high-energy particles are accelerated and fired into it. Examples include the Bevatron, and the SLAC
+\item[Colliding Beam] Two accelerated beams are focussed and fired
+  into one another, so that the particles collide, usually in the
+  centre of mass frame. The LHC is an example.
+\end{description}
+In all particle interactions the 4-momentum is conserved, so
+\begin{align*} 
+p^{\mu}_1 + p^{\mu}_2 &= p^{\mu}_3 + p^{\mu}_4 \\
+(p_1 + p_2)^2 &= (p_3 + p_4)^2
+\end{align*}
+During an interaction the original particles are annihilated, and then
+new particles are created from the resulting energy. As a result, for
+a final state to be achieved there must be enough energy available to
+create the appropriate quantity of mass. Defining the Lorentz invariant, 
+\[ s = (\vec{p}_1 + \vec{p}_2)^2 \] For a desired pair of particles to
+be produced with masses $m_3$ and $m_4$ we then require
+\[ \sqrt{s} \ge m_3 + m_4 \]
+
+\begin{example}[Creating two particles]
+  We wish to create two particles, each with mass $2 \giga
+  \electronvolt$ by colliding two protons (each $1 \giga
+  \electronvolt$).\\
+  The minimum energy in the case of a fixed-target experiment must
+  come entirely from the proton in the beam, so
+  \[ E_1 = \frac{m_{12}^2 - m_1^2 - m_2^2}{2 m_2} = \frac{(m_3+m_4)^2
+    - m_1^2 - m_2^2}{2 m_2} \] thus, $E_1 = 7 \giga \electronvolt$.
+  In the case of colliding beams both particles collide in the
+  centre-of-mass frame, and so
+  \[ E = \frac{m_1+m_2}{2} \ge \frac{m_3+m_4}{2} = 2 \giga
+  \electronvolt \]
+\end{example}
+Clearly a much higher beam energy is required in the case of a fixed
+target to get the same results, but the engineering challenges
+involved with colliding two beams have, in the past, made fixed-target
+experiments more feasible.
+
+
