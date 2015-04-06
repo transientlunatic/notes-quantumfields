@@ -3,17 +3,81 @@
 \documentclass{momento}
 
 \usepackage{danielphysics}
+\usepackage{tensor}
+%\usepackage{breqn}
+\usepackage{mathtools}
 
-\title{Relativistic Quantum Mechanics}
+\usepackage{simplewick, slashed}
+\usepackage{tikz-feyn}
+\title{Relativistic Quantum Fields}
 \author{Daniel Williams}
 
-\providecommand{\Lag}{\mathcal{L}} %The Lagrangian
-
+\providecommand{\Lag}{\mathcal{L}}       %The Lagrangian density
+\providecommand{\Ham}{\mathcal{H}}       %The Hamiltonian density
+\providecommand{\Op}[1]{{\widehat{#1}}}  %A Quantum mechanical operator
+\providecommand{\hcon}[1]{#1^{\dagger}}  %The Hermitian conjugate
+\providecommand{\hOp}[1]{\hcon{\Op{#1}}}
+\providecommand{\normbracket}[1]{\raisebox{0.1em}{:}  {#1}  \raisebox{.1em}{:}}
+\providecommand{\nOp}[1]{\raisebox{0.1em}{:}  \Op{#1}  \raisebox{.1em}{:}}
+\providecommand{\nhOp}[1]{\raisebox{0.1em}{:}  \Op{#1}  \raisebox{.1em}{:}}
+\providecommand{\nm}[1]{@(#1)\ }
+\providecommand{\pd}[1]{\partial_{#1}}
+\providecommand{\pu}[1]{\partial^{#1}}
+\providecommand{\wicon}[2]{\Op{#1}^{\bullet} \Op{#2}^{\bullet}}
+\providecommand{\tOrd}{\mathcal{T}}
+\providecommand{\ps}{\slashed{p}}
+\providecommand{\ds}{\slashed{\partial}}
+\allowdisplaybreaks
 \begin{document}
+\frontmatter
+{
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[fill=accent-blue] (current page.south west) rectangle (current page.north east);
+  %\fill[fill=white, yshift=-10cm]  (current page.north east) rectangle (current page.north west);
+  \def\nbrcircles {377}
+  \def\outerradius {30mm}
+  \def\deviation {.9}
+  \def\fudge {.62}
+
+  \newcounter{cumulArea}
+  \setcounter{cumulArea}{0}
+
+  \pgfmathsetmacro {\goldenRatio} {(1+sqrt(5))}
+  \pgfmathsetmacro {\meanArea} {pow(\outerradius * 10 / \nbrcircles, 2) * pi}
+  \pgfmathsetmacro {\minArea} {\meanArea * (1 - \deviation)}
+  \pgfmathsetmacro {\midArea} {\meanArea * (1 + \deviation) - \minArea}
+
+  \foreach \b in {0,...,\nbrcircles}{
+    % mod() must be used in order to calculate the right angle.
+    % otherwise, when \b is greater than 28 the angle is greater
+    % than 16384 and an error is raised ('Dimension too large').
+    % -- thx Tonio for this one.
+    \pgfmathsetmacro{\angle}{mod(\goldenRatio * \b, 2) * 180}
+
+    \pgfmathsetmacro{\sratio}{\b / \nbrcircles}
+    \pgfmathsetmacro{\smArea}{\minArea + \sratio * \midArea}
+    \pgfmathsetmacro{\smRadius}{sqrt(\smArea / pi) / 2 * \fudge}
+    \addtocounter{cumulArea}{\smArea};
+
+    \pgfmathparse{sqrt(\value{cumulArea} / pi) / 2}
+    \fill[opacity=0.3] (\angle:\pgfmathresult) circle [radius=\smRadius] ;
+}  
+
+  \node at (current page.center) [text width=16cm, yshift=10cm] 
+    {\color{white}\fontsize{72pt}{106pt}\center \selectfont\sffamily Relativistic Quantum Fields};
+
+  \node at (current page.south) [text width= \textwidth, yshift=5cm] 
+    {\color{white}\fontsize{32pt}{120pt}\selectfont \sffamily Daniel Williams};
+
+\end{tikzpicture}
+}
+\newpage
 \maketitle
 
 \tableofcontents
 
+\mainmatter
 \chapter{Classical Field Theory}
 \label{cha:class-field-theory}
 
@@ -22,11 +86,15 @@
 \chapter{Free Scalar Field Theory}
 \label{cha:free-scalar-field}
 
+\input{chapters/free-scalar}
+
 \chapter{Interacting Scalar Fields}
 \label{cha:inter-scal-fields}
+\input{chapters/interacting}
 
 \chapter{The Free Dirac Field}
 \label{cha:free-dirac-field}
+\input{chapters/free-dirac}
 
 \chapter{Quantum Electrodynamics}
 \label{cha:quant-electr}
@@ -34,14 +102,18 @@
 \chapter{Quantum Electrodynamics Scattering}
 \label{cha:quant-electr-scatt}
 
-
-
-\appendices
+\appendices \twocolumn
 
 \chapter{Geometry \& Linear Algebra}
 \label{cha:linearalgebra}
 
 \input{chapters/chapter-2}
+
+\chapter{Calculus}
+\label{cha:calculus}
+
+%\input{chapters/calculus-appendix}
+
 \chapter{Special Relativity}
 \label{cha:specialrelativity}
 
