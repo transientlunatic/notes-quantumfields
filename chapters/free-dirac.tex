@@ -1,0 +1,171 @@
+
+Before the advent of quantum field theory the presence of negative
+energy solutions to the Klein-Gordon equation was considered a major
+problem in quantum theory. These states are normally considered to be
+positive energy anti-particle states, a view known as the
+Feynman-St\"uckelberg interpretation. Only quantum field theory can
+adequately manage the production of particle-antiparticle pairs.
+
+\section{The Dirac equation}
+\label{sec:dirac-equation}
+
+Dirac attempted to avoid the problem of negative energy states by
+finding a field equation linear in its operators. This must take the
+form
+\[ E = \vec{\alpha} \vdot \vec{p} + \beta m \to i \pdv{\psi}{t} = \qty(-i \vec{\alpha} \vdot \vec{\nabla} + \beta m) \psi \] and we need to find $\vec{\alpha}$ and $\beta$.
+If we also insist that we satisfy
+\[ E^2 = m^2 + \abs{\vec{p}}^2 \]
+then, with implicit summation,
+\begin{align*} E^2 &= \alpha_i \alpha_j p_i p_j + (\alpha)_i \beta + \beta \alpha_i) m p_i + \beta^2 m^2 \\
+&= \half(\alpha_i \alpha_j + \alpha_j \alpha_i) p_i p_j + ( \alpha_i \beta + \beta \alpha_i) m p_i + \beta^2 m^2
+\end{align*}
+Enforcing $E^2 = m^2 + \abs{\vec{p}}^2$ we have the conditions on
+$\vec{\alpha}$ and $\beta$.
+
+\begin{subequations}
+\begin{align}
+  \label{eq:79}
+  \alpha_i \alpha_j + \alpha_j \alpha_i &= 2 \delta_{ij} \\
+\alpha_i \beta + \beta \alpha_i &= 0 \\
+\beta^2 &= 1
+\end{align}
+\end{subequations}
+These are anti-commuting objects and not just numbers. These relations
+define them, and any representation which follows these conditions is
+a suitable description. The Dirac representation presents them as
+matrices,
+\begin{equation}
+  \label{eq:80}
+  \alpha =
+  \begin{pmatrix}
+    0 & \vec{\sigma} \\ \vec{\sigma} & 0
+  \end{pmatrix}
+\end{equation}
+and 
+\begin{equation}
+  \label{eq:81}
+  \beta =
+  \begin{pmatrix}
+    \vec{1} & 0 \\ 0 & - \vec{1}
+  \end{pmatrix}
+\end{equation}
+for $\sigma_i$ the Pauli matrices,
+\begin{equation}
+  \label{eq:82}
+  \sigma_1 =  \begin{bmatrix}     0 & 1 \\ 1 & 0   \end{bmatrix}, \quad
+\sigma_2 =    \begin{bmatrix}     0 & -i \\ i & 0  \end{bmatrix}, \quad
+\sigma_3 =    \begin{bmatrix}     1 & 0  \\ 0 & -1 \end{bmatrix}
+\end{equation}
+Since these act on the field the field itself must have four
+components, and so is a spinor.
+
+\section{Gamma matrices}
+\label{sec:gamma-matrices}
+
+The Dirac equation can be written in four-vector form by defining a
+new object, $\gamma^{\mu}$,
+\begin{equation}
+  \label{eq:83}
+  \gamma^0 \equiv \beta = \begin{pmatrix} \vec{1} & 0 \\ 0 & - \vec{1}  \end{pmatrix}, \qquad
+\vec{\gamma} \equiv \beta \alpha = \begin{pmatrix} 0 & \vec{\sigma} \\ - \vec{\sigma} & 0 \end{pmatrix}
+\end{equation}
+These follow the anticommutation relations
+\begin{equation}
+  \label{eq:84}
+  \acomm{\gamma^{\mu}}{\gamma^{\nu}} = 2 g^{\mu \nu}
+\end{equation}
+and the Dirac equation becomes
+\begin{equation}
+  \label{eq:85}
+  \qty( i \gamma^{\mu} \partial_{\mu} - m) \psi = 0
+\end{equation}
+We can write the contraction with a gamma matrix in the slash
+notation, so $\ds = \gamma^{\mu} \partial_{\mu}$. This equation
+describes the free dynamics of a fermion field.
+
+\subsection{Properties of the Dirac matrices}
+\label{sec:prop-dirac-matr}
+
+\begin{subequations}
+  \begin{equation}
+    \label{eq:86}
+    \hcon{(\gamma^0)} = \gamma^0, \quad \hcon{(\gamma^i)} = - \gamma^i
+  \end{equation}
+  \begin{equation}
+    \label{eq:87}
+    (\gamma^0)^2 = 1, \quad (\gamma^i)^2 = -1
+  \end{equation}
+  \begin{equation}
+    \label{eq:88}
+    \hcon{(\gamma^{\mu})} = \gamma^0 \gamma^{\mu} \gamma^0
+  \end{equation}
+\end{subequations}
+The gamma matrices must be of even dimension, and are fixed matrices,
+despite looking like four-vectors, and are not invariant under a
+Lorentz boost.
+
+\section{Negative energy solutions?}
+\label{sec:negat-energy-solut}
+
+we look for plane-wave solutions of the form
+\[ \psi(t, \vec{x}) = u(\vec{p}) e^{-i(Et - \vec{p} \vdot \vec{x})} =
+\begin{bmatrix}
+  \chi \\ \phi
+\end{bmatrix}
+e^{-i(Et - \vec{p} \vdot \vec{x})}
+\]
+Shifting back out of four-vector notation,
+\[ i \pdv{\psi}{t} = (-i \vec{\alpha} \vdot \nabla + \beta m) \psi \implies E
+\begin{bmatrix}
+  \chi \\ \phi
+\end{bmatrix}
+=
+\begin{bmatrix}
+  m & \vec{\alpha} \vdot \vec{p} \\ \vec{\sigma} \vdot \vec{p} & -m
+\end{bmatrix}
+\begin{bmatrix}
+  \chi \\ \phi
+\end{bmatrix}
+\]
+For a particle at rest $\vec{p}=\vec{0}$, so
+\begin{equation}
+  \label{eq:89}
+  E \begin{bmatrix}
+  \chi \\ \phi
+\end{bmatrix}
+=
+\begin{bmatrix}
+  m & 0 \\ 0 & -m
+\end{bmatrix}
+\begin{bmatrix}
+  \chi \\ \phi
+\end{bmatrix}
+\end{equation}
+This has the solutions, the first two for $E=m$, the latter two for $E=-m$
+\[ u =
+\begin{bmatrix}
+  1 \\ 0 \\ 0 \\ 0
+\end{bmatrix}, \quad u = \begin{bmatrix}
+  0 \\ 1 \\ 0 \\ 0
+\end{bmatrix}, \quad
+u =
+\begin{bmatrix}
+  0 \\ 0 \\ 1 \\ 0
+\end{bmatrix}, \quad u = \begin{bmatrix}
+  0 \\ 0 \\ 0 \\ 1
+\end{bmatrix}
+\]
+Thus there are still negative energy solutions; we get around this
+using the Exclusion Principle. The Dirac equation describes particles
+with spin, and so this seems appropriate. This reasoning leads to the
+idea of a Dirac Sea; where all of the negative energy levels are
+already filled, and so the electon cannot fall into a negative
+state. If a particle is moved up it leaves a hole in the sea, which we
+interpret as an antiparticle. This argument, however, doesn't hold up
+for Bosons.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../project"
+%%% End: 
