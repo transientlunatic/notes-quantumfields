@@ -183,7 +183,70 @@ So
 \begin{equation*}
   \chi = \frac{\vec{\sigma} \vdot \vec{p}}{E-m} \phi, \qquad \phi = \frac{\vec{\sigma} \vdot \vec{p}}{E+m} \chi
 \end{equation*}
+These are compatible:
+\begin{equation*}
+  \phi = \qty( \frac{\vec{\sigma} \vdot \vec{p}}{E+m}) \qty( \frac{\vec{\sigma} \vdot \vec{p}}{E-m}) \phi = \frac{\abs{\vec{p}}^2}{E^2-m^2} \phi = \phi
+\end{equation*}
+Since $E^2 = m^2 + \abs{p}^2$, and $\sigma_i \sigma_j = \delta_{ij} +
+i \epsilon_{ijk} \sigma_k \implies (\vec{\sigma} \vdot \vec{p})^2 =
+\abs{\vec{p}}^2 + i (\vec{p} \cp \vec{p}) \vdot \vec{\sigma} =
+\abs{\vec{p}}^2$.  We need to choose a basis for the solutions, the
+simplest is
+\begin{equation}
+  \label{eq:90}
+  \xi^{(1)} =
+  \begin{bmatrix}
+    1 \\ 0
+  \end{bmatrix}, \qquad
+\xi^{(2)} =
+\begin{bmatrix}
+  0 \\ 1
+\end{bmatrix}
+\end{equation}
+Then the positive energy solutions, $\psi^{(1)}$ and $\psi^{(2)}$, to
+\[ \phi = \frac{\vec{\sigma} \vdot \vec{p}}{E+m} \chi \]
+are
+\[ \chi = \xi^{(s)}, \qquad \phi = \frac{\vec{\sigma} \vdot \vec{p}}{E+m} \xi^{(s)} \]
+With
+\[ \psi^{(s)}(x) = u^{(s)} e^{-ip \vdot x} = \sqrt{E+m}
+\begin{bmatrix}
+  \xi^{(s)} \\ \frac{\vec{\sigma} \vdot \vec{p}}{E+m} \xi^{(s)}
+\end{bmatrix}
+e^{-ip \vdot x}
+\]
+The negative energy solutions, $\psi^{(3)}$ and $\psi^{(4)}$ to
+\[ \phi = \frac{\vec{\sigma} \vdot \vec{p}}{E-m} \chi \]
+are then 
+\[ \phi = \xi^{(s)}, \qquad \chi = \frac{\vec{\sigma} \vdot \vec{p}}{E-m} \xi^{(s)} \]
+With
+\[ \psi^{(s+2)}(x) = u^{(s+2)} e^{-ip \vdot x} = \sqrt{-E+m}
+\begin{bmatrix}
+ \frac{\vec{\sigma} \vdot \vec{p}}{E-m} \xi^{(s)} \\   \xi^{(s)}
+\end{bmatrix}
+e^{-ip \vdot x}
+\]
 
+\subsection{Orthogonality and completeness}
+\label{sec:orth-compl}
+
+With the normalisation of $2E$ particles per unit volume,
+\[ \hcon{u^{(r)}} u^{(s)} = 2 E \delta^{rs}, \qquad \hconn{v^{(r)}} v^{(s)} = 2E \delta^{rs} \]
+which is a statement of orthogonality. The completeness relations are 
+\begin{align*}
+  \sum_{s=1,2} u^{(s)}(p) \bar{u}^{(s)} (p) &= \ps + m \\
+\sum_{1,2} v^{(s)}(p) \bar{v}^{(s)}(p) &= \ps - m
+\end{align*}
+with $\bar{u} = \hcon{u} \gamma^0$.
+
+\section{The Dirac Lagrangian}
+\label{sec:dirac-lagrangian}
+
+The Lagrangian of the Dirac field has the form
+\begin{align}
+  \label{eq:91}
+  \Lag &= \bar{\psi} \qty( i \gamma^{\mu} \partial_{\mu}) \psi \nonumber\\
+&= \bar{\psi}_i \qty( i \qty[ \gamma^{\mu}]_{ij} \partial_{\mu} - m \delta_{ij} ) \psi_j
+\end{align}
 
 %%% Local Variables: 
 %%% mode: latex
