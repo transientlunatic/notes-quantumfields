@@ -1,0 +1,170 @@
+The classical theory of electromagnetism is provided by the Maxwell
+equations, with the Faraday tensor
+\begin{equation}
+  \label{eq:114}
+  \tensor{F}{^{\mu \nu}} =
+  \begin{bmatrix}
+    0   & -E_1 &-E_2 & -E_3 \\ E_1 & 0 & -B_3 & B_2 \\
+    E_2 & B_3 & 0 & -B_1 \\ E_3 & -B_2 & B_1 & 0
+  \end{bmatrix}
+\end{equation}
+which is antisymmetric in its arguments, and where the four-current is
+defined 
+\begin{equation}
+  \label{eq:115}
+\pd{\mu} F^{\mu \nu} = j^{\nu}
+\end{equation}
+In terms of the four-potential, $A^\mu$,
+\begin{equation}
+  \label{eq:116}
+F^{\mu \nu} = \pu{\mu} A^{\nu} - \pu{\nu} A^{\mu}
+\end{equation}
+so it follows that
+\[
+\pd{\mu} F^{\mu \nu} = \pd{\mu} \pu{\mu} A^{\nu} - \pd{\mu} \pu{\nu} A^{\mu}
+\]
+By making a gauge transformation on the potential $\ten{F}$ will still
+be left unchanged, so making the gauge transform
+\[ A^{\mu} \to A^{\mu} + \lambda \pu{\mu} \phi \]
+it is possible to choose a $\lambda$ which has
+\[ \pd{\mu} A^{\mu} = 0 \]
+which is the Lorenz gauge, where \[ \partial^2 A^{\mu} = j^{\mu} \]
+If there is no source then \[ \partial^2 A^{\nu} = 0 \] which has solutions
+\[ A^{\mu} = \epsilon^{\mu} e^{i q \vdot x}, \qquad q^2 = 0 \]
+The Lorenz condition implies that $q_{\mu} \epsilon^{\mu} = 0$, so
+$\epsilon^{\mu}$ has only three degrees of freedom: two which are
+transverse, and one which is longitudinal. There is still some freedom
+to change $A^{\mu}$, even after the Lorenz gauge choice, so
+\[ A^{\mu} \to A^{\mu} + \du{\mu}\chi\]
+as long as $\partial^2 \chi = 0$. Usually $\chi$ is chosen so
+$\nabla \vdot \vec{A} = 0$, which is the Coulomb gauge, which implies
+$\vec{q} \vdot \vec{\epsilon}=0$ which are two transverse polarisation
+state.
+
+\section{The free photon field}
+\label{sec:free-photon-field}
+
+We want a Lagrangian which will give $\pd{\mu} F^{\mu \nu}=0$ when
+there are no sources, then
+\begin{equation}
+  \label{eq:117}
+\Lag = - \frac{1}{4} F_{\mu \nu} F^{\mu \nu}
+\end{equation}
+Then, since $F_{\mu \nu}= \pd{\mu} A_{\nu} - \pd{\nu} A_{\mu}$, so
+\[ \pdv{F_{\mu \nu}}{A_\rho}=0 \implies \pdv{\Lag}{A_{\rho}} = 0 \]
+Thus
+\begin{align*}
+  \pdv{F_{\mu \nu}}{(\partial_{\sigma} A_{\rho})} &= g_{\mu}^{\sigma}g_{\nu}^{\rho}-g_{\mu}^{\rho}g_{\nu}^{\sigma} \\
+\implies \pdv{\Lag}{(\partial_{\sigma} A_{\rho})} &= - \half F^{\mu \nu} \pdv{F_{\mu \nu}}{(\partial_{\sigma} A_{\rho})} \\ &= - \half F^{\mu \nu} ( g_{\mu}^{\sigma}g_{\nu}^{\rho}-g_{\mu}^{\rho}g_{\nu}^{\sigma}) \\
+&= - \half (F^{\sigma \rho} - F^{\rho \sigma}) = - F^{\sigma \rho}
+\end{align*}
+
+The photon is a vector boson, so in terms of creation and annihilation
+vectors,
+\begin{equation}
+  \label{eq:118}
+\Op{A}_{\mu}(x) = \int \nm{k} \qty( \Op{a}_{\mu}(\vec{k}) e^{-ik \vdot x} + \hOp{a}_{\mu}(\vec{k}) e^{ik \vdot x})
+\end{equation}
+Since $\pdv*{\Lag}{A_{\mu}}=-F^{0 \mu}$ we need to be careful with the
+canonically conjugate states, so $\pi^0=0$, and $\pi^i = -F^{0i}=E_i$,
+the electric field.
+
+The Hamiltonian is
+\begin{equation}
+  \label{eq:119}
+\Op{H} = \half \int \nm{\vec{k}} E(\vec{k})  \qty( - \Op{a}_{\mu}(\vec{k}) e^{-ik \vdot x} - \hOp{a}_{\mu}(\vec{k}) e^{ik \vdot x})
+\end{equation}
+The commutation relations are 
+\begin{subequations}
+  \begin{align}
+    \comm{\Op{a}_{\mu}(\vec{k})}{\hOp{a}_{\nu}(\vec{p})} &= - g_{\mu \nu} (2 \pi)^3 2 E(\vec{k}) \delta^3(\vec{k}-\vec{p}) \\
+\comm{\Op{a}_{\mu}(\vec{k})}{\Op{a}_{\nu}(\vec{p})} &= \comm{\hOp{a}_{\mu}(\vec{k})}{\hOp{a}_{\nu}(\vec{p})} = 0
+  \end{align}
+\end{subequations}
+
+We now impose gauge conditions on the Lagrangian, so
+\begin{equation}
+  \label{eq:120}
+\Lag = - \frac{1}{4} F_{\mu \nu} F^{\mu \nu} - \frac{\lambda}{2} (\pd{\mu}A^{\mu})^2
+\end{equation}
+for $\lambda$ the Lagrange multiplier which forces the gauge
+condition, $\pd{\mu} A^{\mu}=0$. For general $\lambda$ the propagator
+is
+\begin{align*}
+  D~F(x-y) &= \bra{0} \tOrd A_{\mu}(x) A_{\nu}(y) \ket{0} \\
+&= i \int \frac{\dd[4]{k}}{(2 \pi)^4} \qty(-g^{\mu \nu} + (1-\frac{1}{\lambda}) \frac{k^{\mu}k^{\nu}}{k^2} ) \frac{e^{-ik \vdot(x-y)}}{k^2+i \epsilon}
+\end{align*}
+In the Feynman gauge, with $\lambda=1$,
+\begin{equation}
+  \label{eq:121}
+\bra{0} \tOrd A_{\mu}(x) A_{\nu}(y) \ket{0} = \int \frac{\dd[4]{k}}{(2 \pi)^4} \frac{- i g_{\mu \nu}}{k^2+i \epsilon} e^{-ik \cdot (x-y)}
+\end{equation}
+
+\section{Dirac equation}
+\label{sec:dirac-equation-1}
+
+There is one remaining symmetry of the Dirac lagrnagian which has not
+yet been investigated: a phase-shift of the electron field,
+$\psi \to e^{i \theta} \psi$, and
+$\bar{\psi} \to \bar{\psi} e^{-i \theta}$. Then
+\[ \Lag = \bar{\psi} (i \gamma^{\mu} \pd{\mu}-m) \psi \to
+\bar{\psi}e^{-i \theta} (i \gamma^{\mu} \pd{\mu} -m) e^{i \theta} \psi
+= \Lag \]
+The Lagrangian doesn't change, and so the physics stays the same. The
+conserved current associated with the symmetry via Noether's theorem
+is $j^{\mu}=e \bar{\psi} \gamma^{\mu} \psi$. This is a global U(1)
+symmetry. 
+
+If the transformation is local, depending on the point in spacetime,
+then
+\[ \psi \to e^{i \theta(x)} \psi, \qquad \bar{\psi} \to \bar{\psi} e^{-i \theta(x)} \]
+Thus
+\[ \Lag \to \bar{\psi} e^{-i \theta(x)} (i \gamma^{\mu} \pd{\mu} - m)
+e^{i \theta(x)} \psi = \Lag - \bar{\psi} \gamma^{\mu}(\pd{\mu}
+\gamma^{\mu}(\pd{\mu} \theta(x)) \psi \]
+The free Dirac Lagrangian is no longer invariant; if we really want
+this to be a symmetry of the theory something extra is
+required. Postulating $A^{\mu}$ as a new field which couples to the
+electron according to
+\[ \Lag = \bar{\psi} (i \gamma^{\mu} \pd{\mu} - e \gamma_{\mu} A^{\mu} - m) \psi \]
+for $e$ the charge on the electron, which has the form of the covariant derivative,
+\begin{fequation}[Covariant derivative]
+  \label{eq:122}
+D^{\mu} \equiv \pu{\mu}+ie A^{\mu}
+\end{fequation}
+
+Now
+\begin{align*}
+  \Lag &= \bar{\psi} (i \gamma^{\mu} D_{\mu} - m)\psi \\
+& \to \bar{\psi} \qty( i \gamma^{\mu} e^{-i \theta(x)} D'_{\mu}e^{i \theta(x)} - m) \psi
+\end{align*}
+Thus, to preserve the Lagrangian we need $D_{\mu}$ to transform too,
+\[ D_{\mu} \to D_{\mu}' = e^{i \theta(x)} D_{\mu} e^{-i \theta(x)} \]
+then
+\[ \pd{\mu}+ie A_{\mu}' = e^{i \theta(x)}( \pd{\mu}+ie A_{\mu}) e^{-i \theta(x)} = \pd{\mu} - i \pd{\mu}\theta(x) + i e A_{\mu} \]
+therefore we need
+\[ A_{\mu} \to A_{\mu}' = A_{\mu} - \frac{1}{e} \pd{\mu} \theta(x) \]
+The gauge transform for the classical photon. 
+
+Coupling the electron to a photon makes the theory locally U(1)
+symmetric, so.
+
+\begin{subequations}
+  \begin{equation}
+\label{eq:123}
+    \Lag~{QED} = - \frac{1}{4} F_{\mu \nu} F^{\mu \nu} + \bar{\psi} ( i \gamma^{\mu} \pd{\mu} - m) \psi - e \bar{\psi} \gamma^{\mu} \psi A_{\mu} 
+  \end{equation}
+\begin{equation} \label{eq:124}
+  ( i \gamma^{\mu} \pd{\mu} - m - e \gamma^{\mu} A_{\mu}) \psi = 0 
+\end{equation}
+\begin{equation}
+\label{eq:125}
+\partial^2 A^{\mu} &= e \bar{\psi} \gamma^{\mu} \psi
+  \end{equation}
+\end{subequations}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../project"
+%%% End:

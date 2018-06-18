@@ -1,0 +1,82 @@
+
+\section{Dirac Delta Function}
+\label{sec:dirac-delta-function}
+
+The dirac delta is a function which can be (non-rigorously) defined 
+\begin{namedequation}
+  \begin{equation}
+    \label{eq:11}
+    \delta(x-y) = 
+    \begin{cases}
+      \infty &\text{\quad for} x = y \\
+      0 &\text{\quad for} x \neq y
+    \end{cases}
+  \end{equation}
+\end{namedequation}
+such that its integral is $1$:
+\[ \int \delta(x-y) \dd{x} = 1 \]
+
+It can be visualised as a limit of the Gaussian distribution,
+\[ \delta(x-y) = \lim_{a \to 0} \frac{1}{ a \sqrt{\pi} } \exp( -
+\frac{(x-y)^2}{a^2} \]
+which is equivalent to
+\[ \delta(x-y) = \frac{1}{2 \pi} \int_{- \infty}^{\infty} e^{i(x-y)k}
+\dd{k} \]
+
+\subsection{Useful Properties}
+\label{sec:useful-properties}
+
+Under integration the delta function has the property of picking out a
+value of a function:
+
+\begin{equation}
+  \label{eq:12}
+  \int \delta(x-y) f(x) \dd{x} = f(y)
+\end{equation}
+
+There are a number of other properties:
+\begin{subequations}
+\begin{align}
+  \delta(ax) &= \frac{\delta(x)}{\abs{a}} \\
+  \delta( g(x) ) &= \sum_i \frac{\delta(x - x_i)}{\abs{g^{\prime} (x_i)}} \\
+  \delta(x^2 - a^2) &= \frac{1}{2 \abs{a}} ( \delta(x-a) + \delta(x+a) ) \\
+  (x - y) \pdv{y} \delta(x-y) &= \delta(x - y)
+\end{align}
+\end{subequations}
+
+There also exists a multi-dimensional form,
+\begin{equation}
+  \label{eq:13}
+  \delta^4(x-y) = \delta(x^0 - y^0) \delta(x^1 - y^1) \delta(x^2 - y^2) \delta(x^3 - y^3)
+\end{equation}
+
+\section{Green's Functions}
+\label{sec:greens-functions}
+
+Consider a field which satisfies a differential equation of the form
+\begin{equation}
+  \label{eq:14}
+  \Op{D} \phi(x) = \rho(x)
+\end{equation}
+where $\Op{D}$ is some differential operator.
+
+For example, Poisson's equation is
+\[ \vec{\nabla}^2 \phi(x) = \rho(x) \] Let the function $G(x,y)$ be a
+solution of the same equation, with a point source at $x=y$,  so
+
+\begin{align*}
+  \Op{D} G(x,y) &= \delta(x-y) \\
+\Op{D} \int G(x,y) \rho(y) \dd{y} &= \int \delta(x-y) \rho(y) \dd{y} = \rho(x)
+\end{align*}
+That is,
+\[ \phi(x) = \int G(x,y) \rho(y) \dd{y} \]
+is a solution to the original equation.
+
+The function $G(x,y)$ is a Green's function. Green's functions convert
+the problem of a differential equation into the problem of evaluating
+an integral.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../project"
+%%% End: 

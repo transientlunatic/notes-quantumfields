@@ -248,6 +248,393 @@ The Lagrangian of the Dirac field has the form
 &= \bar{\psi}_i \qty( i \qty[ \gamma^{\mu}]_{ij} \partial_{\mu} - m \delta_{ij} ) \psi_j
 \end{align}
 
+There are two sets of Euler-Lagrange equations, one for $\psi$ and one
+for $\bar{\psi}$.
+
+\[ \pdv{\Lag}{\psi_i} - \pd{\mu} \qty(\pdv{\Lag}{(\pd{\mu}\psi_i)} )=0 \]
+\[ \pdv{\Lag}{\bar{\psi}_i} - \pd{\mu} \qty(\pdv{\Lag}{(\pd{\mu}\bar{\psi}_i)} )=0 \]
+
+Taking the $\bar{\phi}$ equation, so,
+\[ \pdv{\Lag}{\bar{\psi}_i} = \qty( i [\gamma^{\mu}]_{ij} \pd{\mu} - m \delta_{ij} ) \psi_j \]
+and
+\[ \pdv{\Lag}{(\pd{\mu} \bar{\psi}_i)} = 0 \]
+and noting that $\bar{\psi} \equiv \hcon{\psi}_i \gamma^0$, then we arrive at the equation of motion
+\[ \qty( i \gamma^{\mu} \pd{\mu} - m) \psi = 0 \]
+The other set of E-L equations gives the equation for antiparticle,
+\[ i (\pd{\mu} \bar{\psi}) \gamma^{\mu} + m \bar{\psi} = 0 \] We can
+introduce some new notation here, to indicate the direction in which
+the derivative operator acts. The left-associative derivative is then
+$\overleftarrow{\pd{\mu}}$, while the right-associative equivalent is
+$\overrightarrow{\pd{\mu}}$. Thus, the second equation can be rewritten
+\[ ( i \gamma^{\mu} \lpd{\mu} - m) \psi = 0 \]
+
+The Dirac Lagrangian appears to treat the two fields in an
+antisymmetric manner, but in principle each is as fundamental as the
+other, so we can then re-write the Lagrangian, 
+\[ \Lag = \bar{\psi}(i \gamma^{\mu} \pd{\mu}-m) \psi = \pd{\mu} \qty(
+i \bar{\psi} \gamma^{\mu} \psi) - i \qty( \pd{\mu} \bar{\psi} )
+\gamma^{\mu} \psi - m \psi \bar{\psi} \] where the first term in the
+right-hand-side is zero, since it's a total derivative.
+We can even write it
+\begin{align*}
+  \Lag &= \half \bar{\psi} i \gamma^{\mu} \pd{\mu}\psi - \half i (\pd{\mu}\bar{\psi}) \gamma^{\mu} \psi - m \bar{\psi} \psi \\ 
+&= \half \bar{\psi} (i \gamma^{\mu} \rpd{\mu} - m) \psi - \half \bar{\psi} ( i \gamma^{\mu} \lpd{\mu} + m)\psi
+\end{align*}
+
+\section{Spin and angular momentum}
+\label{sec:spin-angul-moment}
+
+The angular momentum of a particle is 
+\[ \vec{L} = \vec{r} \cp \vec{p} \] If this commutes with the
+Hamiltonian the angular momentum is conserved, but we find
+\begin{equation}
+  \label{eq:92}
+  \comm{H}{\vec{L}} = \comm{\vec{a}\vdot \vec{p}}{\vec{r} \cp \vec{p}} = - i \vec{\alpha} \cp \vec{p} \neq 0
+\end{equation}
+Clearly angular momentum is not conserved. Defining a new quantity, the instrinsic angular momentum (or spin),
+\begin{equation}
+  \label{eq:93}
+  \vec{\Sigma} =
+  \begin{bmatrix}
+    \vec{\sigma} & 0 \\ 0 & \vec{\sigma}
+  \end{bmatrix}
+  = -i \alpha_1 \alpha_2 \alpha_3 \vec{\alpha}
+= - i \gamma_1\gamma_2\gamma_3 \vec{\gamma}
+\end{equation}
+Then
+\begin{equation}
+  \label{eq:94}
+  \comm{H}{\vec{\Sigma}} = \comm{\vec{\alpha} \vdot \vec{p}}{-i \alpha_1 \alpha_2 \alpha_3 \vec{\alpha}} = 2 i \vec{\alpha} \cp \vec{p}
+\end{equation}
+It's therefore clear that we can define a quantity
+\begin{equation}
+  \label{eq:95}
+  \vec{J} = \vec{L} + \half \vec{\Sigma}
+\end{equation}
+which is conserved. This is the total angular momentum.
+
+The basis spinors are eigenvectors of 
+\[ \half \Sigma^3 = \half
+\begin{bmatrix}
+  1&0&0&0\\0&-1&0&0\\0&0&1&0\\0&0&0&-1
+\end{bmatrix}
+\]
+with eigenvalues $\pm\half$.
+This explains the four degrees of freedom:
+\begin{itemize}
+\item Positive energy; spin up
+\item Positive energy, spin down
+\item Negative energy, spin up
+\item Negative energy, spin down
+\end{itemize}
+
+\section{Helicity of massless fermions}
+\label{sec:helic-massl-ferm}
+
+If the mass of the field is zero the wave equation simplifies to
+\[ E
+\begin{bmatrix}
+  \chi \\ \phi
+\end{bmatrix}
+= 
+\begin{bmatrix}
+  0 & \vec{\sigma} \vdot \vec{p} \\ \vec{\sigma} \vdot \vec{p} & 0
+\end{bmatrix}
+\begin{bmatrix}
+  \chi \\ \phi
+\end{bmatrix}
+\]
+So
+\[ E \phi = \vec{\sigma} \vdot \vec{p} \chi, \quad E \chi = \vec{\sigma} \vdot \vec{p} \phi \]
+Then defining 
+\[ \Psi~{{R,L}} = \half (\chi\pm\phi) \]
+We have
+\[ E \Psi~R = \vec{\sigma} \vdot \vec{p} \Psi~R, \quad E \Psi~L = -
+\vec{\sigma} \vdot \vec{p} \Psi~L \] With $\Psi~{R,L}$ denoted the
+\emph{Weyl spinors}, which are completely independent, and so can be
+considered as two independent particles. Each of these is an eigenstate of the operator
+\[ \frac{\vec{\sigma} \vdot \vec{p}}{\abs{\vec{p}}} = \frac{\vec{\sigma} \vdot \vec{p}}{E} \] with eigenvalues $\pm 1$.
+
+For the full Dirac spinor the \emph{helicity} operator is defined as
+\begin{equation}
+  \label{eq:96}
+  \Op{h} = \frac{\vec{\Sigma} \vdot \vec{p}}{\abs{\vec{p}}}
+\end{equation}
+which is the component of spin in the direction of the motion.  If the
+eigenvalue of the helicity is $+\half$ the particle is right-handed,
+and if it is $-\half$ it is left-handed. An antiparticle will have the
+opposite helicity to an otherwise identical particle, since its
+momentum has an opposite direction.
+
+We can project a particular helicty from a Dirac spinor using gamma matrices. Defining
+\begin{equation}
+  \label{eq:97}
+  \gamma^5 = i \gamma^0 \gamma^1 \gamma^2 \gamma^3 =
+  \begin{bmatrix}
+    0&\vec{1}\\\vec{1}&0
+  \end{bmatrix}
+\end{equation}
+Then we can define projection operators,
+\begin{equation}
+  \label{eq:98}
+  P~{R,L} = \half(1\pm\gamma^5) = \half
+  \begin{bmatrix}
+    \vec{1} & \pm \vec{1} \\ \pm \vec{1} & \vec{1}
+  \end{bmatrix}
+\end{equation}
+
+The spinor $P~Lu$will be left-handed, but $P~R u$ will be
+right-handed.
+
+\section{Weyl representation}
+\label{sec:weyl-representation}
+
+The \emph{Weyl} or \emph{chiral representation} of the gamma matrices
+makes the relation to spin more explicit. In this representation
+\[ \gamma^0 = \begin{bmatrix}  0&\vec{1}\\\vec{1}&0 \end{bmatrix},
+\quad \vec{\gamma} = \begin{bmatrix} 0 & \vec{\sigma} \\ - \vec{\sigma} & 0 \end{bmatrix}, 
+\quad \gamma^5 = 
+\begin{bmatrix}  -\vec{1} & 0 \\ 0 & \vec{1}\end{bmatrix} \]
+
+The projection operator in this representation then looks like
+\begin{subequations}
+\begin{equation}
+  \label{eq:99}
+  P~L = \half ( 1 -\gamma^5)=  \begin{bmatrix}\vec{1}&0\\0&0  \end{bmatrix}
+\end{equation}
+\begin{equation}
+  \label{eq:100}
+  P~R = \half (1+\gamma^5)=
+  \begin{bmatrix}
+    0&0\\0&\vec{1}
+  \end{bmatrix}
+\end{equation}
+\end{subequations}
+Thus the left-handed Weyl spinor is the upper part, and the right
+handed the lower part of the Dirac spinor. Thus
+\begin{equation}
+  \label{eq:101}
+  P~R u =   \begin{bmatrix}0&0\\0&\vec{1} \end{bmatrix}
+  \begin{bmatrix} \Psi~L \\ \Psi~R  \end{bmatrix} =
+  \begin{bmatrix}
+    0 \\ \Psi~R
+  \end{bmatrix}
+\end{equation}
+
+\section{The weak interaction}
+\label{sec:weak-interaction}
+
+The weak interaction only acts on left-handed particles. Parity
+transformations leave spin unchanged, but will turn left-handed
+particles into right-handed particles, and so weak interactions must
+be parity violating.
+
+It's also worth noting that helicity is only conserved for massless
+particles, as a massive particle therewill always be a boost into a
+higher velocity frame, which will invert the momentum's
+direction. This causes the helicity to flip.
+
+The Dirac Lagrangian has the form
+\[ m \bar{\psi} \psi = m (\hcon{\Psi}~L \hcon{\Psi}~R)
+\begin{bmatrix}  0&\vec{1}\\\vec{1}&0 \end{bmatrix}
+\begin{bmatrix} \Psi~L \\ \Psi~R \end{bmatrix}
+= m \qty( \hcon{\Psi}~L \Psi~R + \hcon{\Psi}~R \Psi~L )
+\]
+in the Chiral representation. The mass terms mix the left and
+right-handed states, and so the weak interaction cannot act on massive
+particles. 
+
+\section{The Higgs field}
+\label{sec:higgs-field}
+
+The solution to this problem is to introduce a new \emph{Higgs} field
+which couples left-handed particles to right-handed ones, giving them
+an effective mass. The Lagrangian has the form
+\begin{equation}
+  \label{eq:102}
+  \Lag~{higgs} \supset  Y \bar{\psi}~L \vdot \phi \psi~R
+\end{equation}
+If the vacuum of the system contains a non-zero amount of this field,
+so $\ev{\phi} \neq 0$, then we can generate a mass $Y\ev{\phi}$.
+
+\section{Symmetries of the Dirac equation}
+\label{sec:symm-dirac-equat}
+
+\subsection{Lorentz transformation}
+\label{sec:lorentz-transf}
+
+Under a Lorentz transform, $x'^{\mu} = \Lambda^{\mu}_{\nu} x^{\nu}$,
+so
+\[ \pd{\mu} \to \pd{\mu}' = [\Lambda^{-1}]_{\mu}^{\nu} \pd{\nu}, \quad \psi(x) \to \psi'(x') = S \psi(x) \]
+Now,
+\[ (i \gamma^{\mu} \pd{\mu} - m)\psi(x)=0 \to (i \gamma^{\mu}
+[\Lambda^{-1}]^{\nu}_{\mu} \pd{\nu} - m) S \psi(x) = 0\]
+Pre-multiplying by $S^{-1}$, then
+\[ \qty( i S^{-1} \gamma^{\mu} S [\Lambda^{-1}]^{\nu}_{\mu} \pd{\nu}-m) \psi(x) = 0 \]
+and so
+\[ S^{-1} \gamma^{\mu} S = \Lambda^{\mu}_{\nu} \gamma^{\nu} \]
+
+Now, suppose we have an infintessimal proper transformation,
+\[ \Lambda^{\mu}_{\nu} = g^{\mu}_{\nu}+ \omega^{\mu}_{\nu} \]
+with the latter component anti-symmetric. Now, writing 
+\[ S = 1 + \frac{i}{4} \sigma_{\mu \nu} \omega^{\mu \nu} \]
+which is a parameterisation, so
+\[ \gamma^{\mu} + \omega^{\mu}_{\nu} \gamma^{\nu} = (1-\frac{i}{4} \sigma_{\alpha \beta} \omega^{\alpha \beta}) \gamma^{\mu} (1+ \frac{i}{4} \sigma_{\sigma \rho} \omega^{\sigma \rho}) \]
+Thus
+\[ 2 i \omega^{\alpha\beta} \qty(\delta^{\mu}_{\alpha} \gamma_{\beta}
+- \delta^{\mu}_{\beta} \gamma_{\alpha}) =
+\comm{\gamma^{\mu}}{\sigma_{\alpha \beta}} \omega^{\alpha \beta} \]
+(ignoring terms above the order of $\omega^2$), and we eventually reach
+\[ \sigma_{\mu \nu} = \frac{i}{2} \comm{\gamma_{\mu}}{\gamma_{\nu}} \]
+This is how a fermionic field transforms under a Lorentz boost.
+
+The adjoint field transforms as
+\[ \bar{\psi} = \hcon{\psi} \gamma^0 \to \hcon{\psi} \hcon{S} \gamma^0
+= \hcon{\psi} \gamma^0 S^{-1} = \bar{\psi} S^{-1} \] since $\hcon{S}
+\gamma^0 = \gamma^0 S^{-1}$, and so the quantity $\bar{\psi} \psi$ is
+invariant. Since we have an invariant, we must have an associated
+current, and so
+\begin{equation}
+  \label{eq:103}
+  j^{\mu} = \bar{\psi} \gamma^{\mu} \psi \to \bar{\psi} S^{-1} \gamma^{\mu} S \psi = \Lambda^{\mu}_{\nu} \bar{\psi} \gamma^{\nu} \psi
+\end{equation}
+
+\begin{subequations}
+  \begin{description}
+  \item[scalars] \[ \bar{\psi} \psi \to \bar{\psi} \psi \]
+  \item[pseudoscalars] \[\bar{\psi} \gamma^5 \psi \to \det(\Lambda) \bar{\psi} \gamma^5 \psi \]
+  \item[vectors] \[ \bar{\psi} \gamma^{\mu} \psi \to \Lambda^{\mu}_{\nu} \bar{\psi} \gamma^{\nu} \psi \]
+  \item[axial vectors] \[ \bar{\psi} \gamma^{\mu} \gamma^5 \psi \to \det(\Lambda) \Lambda^{\mu}_{\nu} \bar{\psi} \gamma^{\nu} \gamma^5 \psi \]
+  \item[tensors] \[ \bar{\psi} \sigma^{\mu \nu} \gamma^5 \psi \to \Lambda^{\mu}_{\alpha} \Lambda^{\nu}_{\beta} \bar{\psi} \sigma^{\alpha \beta} \gamma^5 \psi \]
+  \end{description}
+\end{subequations}
+
+\subsection{Charge conjugation, parity, and time-reversal}
+\label{sec:charge-conj-parity}
+
+Parity: As $t\to t$, $\vec{x} \to - \vec{x}$ \\
+Charge conjugation: As $\psi \to \psi~c \equiv C \tr{\bar{\psi}}$ \\
+Time reversal: As $t \to - t$, $\vec{x} \to \vec{x}$, and so $\psi(t,
+\vec{x}) \to \psi~T(-t, \vec{x}) = T \psi^{*}(t, \vec{x})$.
+
+The corresponding transformations are
+\begin{subequations}
+\begin{align}
+  \label{eq:104}
+  C: C \tr(\bar{\psi})(t,\vec{x}) &= i \gamma^2 \gamma^0 \tr(\bar{\psi})(t,\vec{x}) \\
+P: P \psi(t, \vec{x}) &= \gamma^0 \psi(t, \vec{x}) \\
+T: T \psi^{*}(t, \vec{x}) &= i \gamma^1 \gamma^3 \psi^{*}(t, \vec{x})
+\end{align}
+\end{subequations}
+
+\begin{bigderiv*}
+  \begin{align*}
+    H & = \int T^{00} \dd[3]{x} = \int i \hOp{\psi} \pu{0} \Op{\psi} \dd[3]{x} \\
+&= \int \dd[3]{x} \int \nm{p} \frac{\dd[3]{q}}{2(2 \pi)^3} \sum_{s,s'} \qty( \hOp{a}^{(s)} (\vec{p}) \hcon{u}^{(s)}(p) e^{ip\vdot x} +  \hOp{b}^{(s)} (\vec{p}) \hcon{v}^{(s)}(p) e^{-ip\vdot x} ) \\ 
+& \qquad \qquad \qquad \qquad \qquad \times
+ \qty( \hOp{a}^{(s')} (\vec{q}) \hcon{u}^{(s')}(p) e^{iq\vdot x} +  \hOp{b}^{(s')} (\vec{p}) \hcon{v}^{(s')}(p) e^{-iq\vdot x} ) 
+\intertext{There are three orthogonality relations which simplify this,
+\[ \hcon{u}^{(r)} v^{(s)} = 2E \delta^{rs} \qquad \hcon{u}^{(r)} u^{(s)} = 2 E \delta^{rs}  \qquad \hcon{u}^{(r)}v^{(s)} = 0 \]
+}
+H&= \int \nm{p} E(\vec{p}) \sum_s \qty(\hOp{a}^{(s)}(\vec{p}) \Op{a}^{(s)}(\vec{p}) - \Op{b}^{(s)}(\vec{p}) \hOp{b}^{(s)}(\vec{p}) ) \\
+&= \int \nm{p} E(\vec{p}) \sum_s
+ \qty(\hOp{a}^{(s)}(\vec{p}) \Op{a}^{(s)}(\vec{p}) - \hOp{b}^{(s)}(\vec{p}) \Op{b}^{(s)}(\vec{p}) - \comm{\Op{b}^{(s)}(\vec{p})}{\hOp{b}^{(s)}(\vec{p})})
+  \end{align*}
+We can't postulate a commutation relation for the creation and annihilation operators, as even after subtracting an infinite complex number the antiparticles still give a negative energy contribution. So the energy could always be reduced by adding more antiparticles, making an unstable system. We need to make their contributions positive, so must turn to anticommutation relations.
+\caption{The derivation of the Hamiltonian for the free Dirac field.}
+\label{der:dirac-hamiltonian}
+\end{bigderiv*}
+
+
+\section{Second quantisation}
+\label{sec:second-quantisation-1}
+
+Thus far the Dirac equation has only been framed in terms of quantum
+mechanics. To transition to QFT we need to convert the fields to
+operators. We proceed as for the scalar field.
+\begin{align*}
+  \Op{\psi}(x) &= \int \nm{p} \sum_s \big( \Op{a}^{(s)}(\vec{p}) u^{(s)}(p) e^{-ip\vdot x} \\ & \qquad \qquad \qquad+ \hOp{b}^{(s)}(\vec{p}) v^{(s)}(p) e^{ip\vdot x} \big)
+\end{align*}
+From here onwards the hat notation for operators is omitted for neatness.
+
+\section{The energy momentum tensor}
+\label{sec:energy-moment-tens-1}
+
+From Noether's theorem the energy momentum tensor is
+\begin{equation}
+  \label{eq:105}
+  T^{\mu \nu} = \pdv{\Lag}{(\pd{\mu}\psi)} \pu{\nu} \psi + \pu{\nu} \bar{\psi} \pdv{\Lag}{(\pd{\mu}\bar{\psi})} - g^{\mu \nu} \Lag = \bar{\psi} i \gamma^{\mu} \pu{\nu} \psi
+\end{equation}
+where the Dirac equation was used to remove the last term. Thus the Hamiltonian is
+\begin{equation}
+  \label{eq:106}
+  T^{00} = i \hcon{\psi} \pu{0} \psi \iff H = \int i \hcon{\psi} \pu{0} \psi \dd[3]{x}
+\end{equation}
+
+\section{Anticommutation}
+\label{sec:anticommutation}
+
+We can postulate some anticommutation relations for the Dirac field,
+\begin{subequations}
+  \begin{align}
+    \label{eq:107}
+    \acomm{\Op{a}^{(r)}(\vec{k})}{\hOp{a}^{(s)}(\vec{p})} &  =\acomm{\Op{a}^{(r)}(\vec{k})}{\hOp{a}^{(s)}(\vec{p})} \nonumber\\
+&= \delta^{rs} (2 \pi)^3 2 E(\vec{k}) \delta^3(\vec{k}-\vec{p}) \\
+ \acomm{\Op{a}^{(r)}(\vec{k})}{\Op{a}^{(s)}(\vec{p})} & =  \acomm{\Op{a}^{(r)}(\vec{k})}{\Op{b}^{(s)}(\vec{p})} \nonumber \\= \cdots &= 0
+  \end{align}
+\end{subequations}
+and then the anti-commutation relations for the fields are
+\begin{subequations}
+  \begin{align}
+    \label{eq:108}
+    \acomm{\Op{\phi}^{(r)}(\vec{x}, t)}{\Op{\pi}^{(s)}(\vec{y},t)} &= i \delta^{rs} \delta^3(\vec{x}-\vec{y}) \\
+\acomm{\Op{\psi}^{(r)}(\vec{x},t)}{\Op{\psi}^{(s)}(\vec{y},t)} &= \acomm{\Op{\pi}^{(r)}(\vec{x},t)}{\Op{\pi}^{(s)}(\vec{y},t)} = 0
+  \end{align}
+\end{subequations}
+This means the state of two fermions is antisymmetric under
+interchange, which is the origin of the Fermi-Dirac statistics, and
+the Pauli exclusion principle.
+
+\section{The Dirac propagator}
+\label{sec:dirac-propagator}
+
+The Greens function for the Dirac equation satisfies
+\[ S~F(x-y) \equiv G_2(x,y) \]
+so
+\begin{equation}
+  \label{eq:109}
+  (i \ds - m) S~F (x-y) = i \delta^{(4)}(x-y)
+\end{equation}
+and then writing
+\begin{equation}
+  \label{eq:110}
+  S~F(x-y) = \int \nm{p} \tilde{S}~F(p) \exp(-ip \vdot(x-y) )
+\end{equation}
+premultiplying this by $(i \ds -m)$, and remembering that
+\[ \int \nm{p} e^{-ip \dot (x-y)} = \delta^{(4)}(x-y) \]
+then
+\begin{equation}
+  \label{eq:111}
+  \tilde{S}~F(p) = \frac{i}{\ps -m } = \frac{i(\ps + m)}{p^2 - m^2}
+\end{equation}
+
+Just as with scalar fields the propagator is a time-ordered product of
+fields, but we must be careful with the signs. For a fermion field
+\begin{equation}
+  \label{eq:112}
+  \tOrd \psi^{(r)}(x) \bar{\psi}^{(s)}(y) = 
+  \begin{cases}
+    \psi^{(r)}(x) \bar{\psi}^{(s)}(y) & \text{for $x^0 > y^0$} \\
+- \bar{\psi}^{(s)}(y) \psi^{(r)}(x) & \text{for $x^0 < y^0$}
+  \end{cases}
+\end{equation}
+And with this definition,
+\begin{fequation}[Dirac propagator]
+  \label{eq:113}
+  S~F^{rs}(x-y) = \bra{0} \tOrd \psi^{(r)}(x) \bar{\psi}^{(s)}(y) \ket{0}
+\end{fequation}
+
+
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: "../project"

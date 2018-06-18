@@ -1,0 +1,179 @@
+%% Classical Fields
+
+A physical field is normally governed by two restrictions; a
+differential equation, and boundary conditions, but they can be
+described using the Lagrangian and the principle of least action.
+
+\begin{definition}[Action]
+  Action is the quantity
+  \[ S = \int \Lag(\phi, \partial_\mu \phi) \dd[4]{x} \]
+  for $\Lag$ the Lagrangian, itegrated over all space-time.
+\end{definition}
+
+A field adopts a configuration to reduce the action to a minimum. To
+find this we look for the infinitessimal variations which leave the
+action unchanged, i.e.
+\begin{equation}
+  \label{eq:1}
+  \phi(x) \to \phi(x) + \delta \phi(x) \quad | \quad S \to S + \delta S 
+\end{equation}
+with $\delta S = 0$.
+
+Then
+\begin{align*}
+  \delta S &= 
+     \delta \phi \pdv{\phi} \int \Lag(\phi, \partial_{\nu} \phi) \dd[4]{x} \\ 
+     &\quad+ \delta(\partial_{\mu} \phi ) \pdv{(\partial \mu
+        \phi)} \int \Lag(\phi, \partial_{\nu} \phi) \dd[4]{x} \\
+     &= \int \qty( \delta \phi \pdv{\Lag}{\phi} + \partial_{\mu} (\delta
+        \phi) \pdv{\Lag}{(\partial_{\mu} \phi)} ) \dd[4]{x}
+\end{align*}
+since, for a well-behaved field we have $\delta (\partial_{\mu} \phi)
+= \partial_{\mu}(\delta \phi)$, by the mixed-derivatives theorem.
+Now, 
+\begin{equation}
+  \label{eq:2}
+  \partial_{\mu} \qty( \delta \phi \pdv{\Lag}{(\partial_{\mu} \phi)} ) = 
+  \partial_{\mu} (\delta \phi) \pdv{\Lag}{(\partial_{\mu} \phi)} + \delta \phi \partial_{\mu} \qty( \pdv{\Lag}{(\partial_{\mu} \phi)} )
+\end{equation}
+which, given that a total derivative evaluated across all of space
+will vanish, since it is equivalent to being evaluated at either end
+of the region, and so
+\begin{equation}
+  \label{eq:3}
+  \delta S = \int \qty[ \delta \phi \pdv{\Lag}{\phi} + \partial_{\mu} \qty(\delta \phi \pdv{\Lag}{(\partial_{\mu} \phi)}) - \delta \phi \partial_{\mu} \qty( \pdv{\Lag}{(\partial_{\mu}\phi)})] \dd[4]{x}
+\end{equation}
+
+This is true for all $\delta \phi$, and so we can get the
+Euler-Lagrange equations,
+\begin{fequation}[Euler-Lagrange Equations]
+  \label{eq:euler-lagrange}
+%\begin{equation}
+  \pdv{\Lag}{\phi} - \partial_{\mu} \qty( \pdv{\Lag}{(\partial_{\mu} \phi )}) = 0 
+%\end{equation}
+\end{fequation}
+
+\begin{example}[Using the Euler-Lagrange Equations]
+  Consider a Lagrangian
+  \[ \Lag = \half \partial_{\mu} \phi \partial^{\mu} \phi \] the terms
+  the terms for the Lagrangian are then
+  \[ \pdv{\Lag}{\phi} = 0 \] and \[ \pdv{\Lag}{(\partial_{\mu} \phi)}
+  = \partial^{\mu} \phi \] Which gives the wave equation:
+  \[ \partial_{\mu} \partial^{\mu} \phi = \qty( \pdv[2]{t} -
+  \vec{\nabla}^2 ) \phi = 0 \]
+\end{example}
+
+\section{Noether's Theorem}
+\label{sec:noethers-theorem}
+
+\begin{theorem}[Noether's Theorem]
+  If action is unchanged under a transformation then there exists a
+  conserved current which is associated with the symmetry.
+\end{theorem}
+
+Consider the infinitessimal transformation of both coordinates and the
+fields,
+\begin{align*}
+  x^{\mu} \to x^{\prime \mu} &= x^{\mu} + \delta x^{\mu} = x^{\mu} + \tensor{X}{^\mu_\nu} \omega^{\nu} 
+  \\ \phi \to \phi^{\prime} &= \phi + \delta \phi = \phi + \tensor{\Phi}{_{\nu}} \omega^{\nu}
+\end{align*}
+which are parametrised by an infintessimal parameter $\omega^{\nu}$.
+
+The change in the field can be due to both a change in the function
+defining the field, $\delta_{\phi} \phi$, and in the coordinates,
+$\partial_{\mu} \phi \delta x^{\mu}$. The change in the Lagrangian is
+then
+\begin{align*}
+  \delta \Lag &= \partial_{\mu} \Lag \delta x^{\mu} + \pdv{\Lag}{\phi} \delta_{\phi}\phi + \pdv{\Lag}{(\partial_{\nu} \phi)} \delta_{\phi} (\partial_{\nu} \phi) \\
+&= \partial_{\mu} \Lag \delta x^{\mu} + \partial_{\nu} \qty( \pdv{\Lag}{(\partial_{\nu} \phi)}) \delta_{\phi} \phi + \pdv{\Lag}{(\partial_{\nu} \phi)} \partial_{\nu} (\delta_{\phi} \phi ) \\ 
+&= \partial_{\mu} \Lag \delta x^{\mu} + \partial_{\nu} \qty( \pdv{\Lag}{(\partial_{\nu} \phi )} \delta_{\phi} \phi )
+\end{align*}
+This is the change in the Lagrangian, the change in the action is 
+\begin{equation}
+  \label{eq:4}
+  \delta S = \delta \qty( \int \dd[4]{x} \Lag )
+\end{equation}
+the integration measure changes, and requires a Jacobian:
+\[ \dd[4]{x^{\prime}} = \qty| \pdv{x^{\prime}}{x} | \dd[4]{x} =
+(1+ \partial_{\mu} \delta x^{\mu} ) \dd[4]{x} \]
+so
+\begin{align*}
+  \delta S &= \int \dd[4]{x} (\delta \Lag + \Lag \partial_{\mu} \delta x^{\mu} \\
+  &= \int \dd[4]{x} \qty( \partial_{\mu} \Lag \delta x^{\mu}
+  + \partial_{\nu} \qty( \pdv{\Lag}{(\partial_{\nu}
+    \phi)} \partial_{\phi} \phi ) + \Lag \partial_{\mu} \delta x^{\mu}
+  ) \\ &= \int \dd[4]{x} \partial_{\mu} \qty( \pdv{\Lag}{(\partial_{\mu} \phi)} \delta_{\phi} \phi + \Lag \delta x^{\mu} )
+\end{align*}
+Now writing $\delta x^{\mu} = \tensor{X}{^{\mu}_{\nu}} \omega^{\nu}$, and $\delta \phi = \tensor{\Phi}{_{\nu}}\omega^{\nu}$, then
+\[ \delta_{\phi} \phi = \delta \phi - \partial_{\mu} \phi - \delta x^{\mu} = (\Phi_{\nu} - \partial_{\mu} \phi \tensor{X}{^{\mu}_{\nu}} ) \omega^{\nu} \]
+which can be written in terms of the divergence of a current,
+\[ \delta S = - \int \dd[4]{x} \partial_{\mu} \tensor{j}{^{\mu}_{\nu}}
+\omega^{\nu} \]
+where
+\begin{equation}
+  \label{eq:5}
+  \tensor{j}{^{\mu}_{\nu}} = - \pdv{\Lag}{(\partial_{\mu} \phi)} 
+                          ( \tensor{\Phi}{_{\nu}} - \partial_{\rho} \phi
+                            \tensor{X}{^{\rho}_{\nu}}) - \Lag \tensor{X}{^{\mu}_{\nu}}
+\end{equation}
+which can be rearranged to give
+\begin{fequation}
+  \begin{equation}
+\label{eq:6}
+ \tensor{j}{^{\mu}_{\nu}} = \qty( \pdv{\Lag}{(\partial_{\mu} \phi) } \partial_{\rho} \phi - \tensor{g}{^{\mu}_{\rho}} \Lag ) \tensor{X}{^{\rho}_{\nu}} - \pdv{\Lag}{(\partial_{\mu} \phi)} \Phi_{\nu} 
+\end{equation}
+\end{fequation}
+To ensure that the action is invariant under this transformation this current must be conserved, i.e. 
+\begin{fequation}
+  \begin{equation}
+    \label{eq:7}
+    \partial_{\mu} \tensor{j}{^{\mu}_{\nu}} = 0
+  \end{equation}
+\end{fequation}
+which is Noether's Theorem.
+
+\begin{example}[The energy-momentum tensor.]
+  Consider space-time translations:
+  \begin{align}
+    x^{\mu} \to x^{\prime \mu} = x^{\mu} + \omega^{\nu} & \implies \tensor{X}{^{\mu}_{\nu}} = \tensor{g}{^{\mu}_{\nu}} \\
+\phi \to \phi^{\prime} = \phi & \implies \Phi_{\nu} = 0
+  \end{align}
+  Substituting these into the expression for conserved current we have
+    \begin{equation}
+      \label{eq:8}
+      \tensor{T}{^{\mu}^{\nu}} = \pdv{\Lag}{(\partial_{\mu} \phi)} \partial_{\nu} \phi - \tensor{g}{^{\mu}^{\nu}} \Lag
+    \end{equation}
+    which is central to General relativity. There are a number of
+    physical consequences of this tensor's existence. Consider a part
+    of the tensor,
+    \[ \tensor{J}{^{\mu}} = \tensor{T}{^{0}^{\mu}} =
+    \pdv{\Lag}{(\partial_0 \phi)} \partial^{\mu}\phi -
+    \tensor{g}{^0^{\mu}} \Lag \] and then integrate its divergence
+    over a three-dimensional volume $V$,
+    \[ \int_V \partial_{\mu} J^{\mu} \dd{V} = \int_V \qty(
+    \pdv{J^0}{t} + \vec{\nabla} \cdot \vec{J} ) \dd{V} \]
+
+    By Noether's theorem we know the divergence is zero, so, applying
+    Gauss's Theorem,
+    \[ \int_V \pdv{J^0}{t} \dd{V} = - \int_V \vec{\nabla} \cdot
+    \vec{J} \dd{V} = - \int_A \vec{J} \cdot \dd{\vec{A}} \] Thus any
+    change in the total $J^0$ in the volume must be due to a current
+    $J$ flowing through the surface of the volume.
+
+The conserved quantity associated with time transformations is the Hamiltonian,
+\begin{equation}
+  \label{eq:9}
+  H = \int \tensor{T}{^0^0} \dd[3]{x}
+\end{equation}
+while the quantity associated with space transformations is the three momentum operator
+\begin{equation}
+  \label{eq:10}
+  P^i = \int \tensor{T}{^0^i} \dd[3]{x}
+\end{equation}
+\end{example}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../project"
+%%% End: 
+

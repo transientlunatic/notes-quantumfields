@@ -1,0 +1,121 @@
+Modern formualtions of mechanics and relativity require an extensive
+quantity of linear algebra, often using constructions such as tensors.
+
+\section{Vectors and Covectors}
+\label{sec:vectors-covectors}
+
+\begin{definition}[Vector]
+  A vector is an object which is an element 
+      \marginpar{$v^\alpha$}
+  of a vector space; in terms of geometry this is an entity with both a concept of magntiude and of direction.
+\end{definition}
+
+\begin{definition}[Covector]
+
+  A covector is the dual object of a vector, 
+    \marginpar{$v_\alpha$}
+    and maps a vector space to a scalar field.
+\end{definition}
+
+It is possible to visualise a vector as an arrow with length and
+direction. In this case its corresponding covector is a means of
+assigning its length, for example a series of evenly-spaced planes
+through which it passes, or the notches on a tape measure.\\
+Conventional notation represents the components of a vector as a
+superscript, e.g. for the vector $v$ the components are
+$v^\alpha$. For a covector they are subscript, $v_\alpha$.
+
+\section{Tensors}
+\label{sec:tensors}
+
+It is possible to use multiplication by a scalar to change the
+magnitude of a vector, but what if we wish to change its direction?
+This is where we require tensors, which are objects composed out of
+vectors.
+
+Let's return to the concept of a vector field. A vector field is a
+mathematical construction where every point in space has a vector
+(think of it as an arrow) attached to it. Suppose now we want to
+attach some more complicated construction to every point? For example,
+what if we want a measure of the distortion of space at every point,
+by attaching an ellipsoid to every point? This is where the concept of
+a tensor field grows from a vector field.
+
+\begin{definition}[Tensor]
+  A $(k, l)$ \emph{tensor} is the map
+  \[ T : \underbracket{ \vs{V^{*}} \otimes \cdots \otimes \vs{V^{*}}
+  }_{k \text{ copies}} \otimes \overbracket{ \vs{V} \otimes \cdots
+    \otimes \vs{V} }^{l \text{ times}} \to \mathbb{R}\] which is
+  linear in all of its arguments.
+\end{definition}
+
+\section{Tensor Fields}
+\label{sec:tensor-fields}
+
+The concept of a tensor field is a two-stage concept. First there is the concept of the vector bundle.
+
+\begin{definition}[Real Vector Bundle]
+  This consists of
+  \begin{enumerate}
+  \item topological spaces, $X$, the base space, and $E$, the total
+    space.
+  \item a continuous surjection $\pi : E \to X$, the bundle projection,
+  \item for every $x \in X$ the structure of a finite-dimensional real vector space on the fibre $\pi^{-1}(\set{x})$.
+  \end{enumerate}
+  where the compatibility condition is: for every point in $X$ there
+  is an open neighbourhood $U$, a natural number $k$, and a
+  homeomorphism,
+  \[ \phi: U \times \mathbb{R}^k \to \pi^{-1}(U) \] such that for all
+  $x \in U$,
+  \begin{itemize}
+  \item $( \pi \circ \phi )(x,v) = x$ for all vectors $v$ in
+    $\mathbb{R}^k$, and
+  \item the map $v \to \phi(x,v)$ is an isomorphism between the vector
+    spaces $\mathbb{R}^k$ and $\pi^{-1}(\set{x})$.
+  \end{itemize}
+\end{definition}
+
+An example of a vector bundle is a M\"obius strip, which is a line
+bundle over a one-sphere $S^1$ (i.e. a circle). Every local point in
+the strip looks like $U \times \mathbb{R}$, for $U$ an open arc which
+includes the point. However, the total bundle is different from $S^1
+\times \mathbb{R}$, which is a cylinder. This makes it locally
+trivial, but the global geometry is more complex.\\
+The fibre bundle can thus be seen as a vector space which is dependent
+on some parameter in a manifold, $M$; in the case of the M\"obius strip, this is the
+angular distance around the strip.
+
+\subsection{Manifolds}
+\label{sec:manifolds}
+
+A \emph{manifold} is a topological space which resembles Euclidean
+space around every point on it. In one dimension examples include
+lines and circles, which are homeomorphic to $\mathbb{E}^1$, but
+figures-of-eight are a counter-example, due to the crossing of the
+lines. In two dimensions planes, spheres, and tori are examples, while
+the Klein bottle is a counter-example. The local geometry of manifolds
+is Euclidean---consider a football field, where it is possible to draw
+straight lines and have a flat surface despite it being located on the
+surface of a sphere, but the global geometry often is not. It is
+possible to map regions of a manifold onto the Euclidean plane,
+producing \emph{charts} by means of \emph{map projections}. In a
+region which appears on two neighbouring charts a transformation will
+be required to move between the two, and this is a \emph{transition
+  map}.
+
+Consider a point, $p$ on the manifold $M$. The \emph{tangent space} is
+a vector space at the point $p$ which is at a tangent to the manifold
+$M$, and can be denoted $T_{x}(M)$ or $T_xM$. The tangent bundle is
+the disjoint union of all of the tangent spaces across the manifold,
+and is denoted $TM$.
+
+Now, at any given point a tensor field assigns a tensor to the space,
+\[ \vs{V} \otimes \cdots \otimes \vs{V} \otimes \vs{V^{*}} \otimes
+\cdots \otimes \vs{V^{*}}\] where $\vs{V}$ is the tangent space, and
+$\vs{V^{*}}$ the cotangent space at the point.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../project"
+%%% End: 
+

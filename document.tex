@@ -2,13 +2,14 @@
 
 \documentclass{momento}
 
-\usepackage{danielphysics}
+\usepackage{physicsplus}
 \usepackage{tensor}
 %\usepackage{breqn}
 \usepackage{mathtools}
 
 \usepackage{simplewick, slashed}
 \usepackage{tikz-feyn}
+\usepackage{multirow}
 \title{Relativistic Quantum Fields}
 \author{Daniel Williams}
 
@@ -20,13 +21,16 @@
 \providecommand{\normbracket}[1]{\raisebox{0.1em}{:}  {#1}  \raisebox{.1em}{:}}
 \providecommand{\nOp}[1]{\raisebox{0.1em}{:}  \Op{#1}  \raisebox{.1em}{:}}
 \providecommand{\nhOp}[1]{\raisebox{0.1em}{:}  \Op{#1}  \raisebox{.1em}{:}}
-\providecommand{\nm}[1]{@(#1)\ }
+\providecommand{\nm}[1]{\mathfrak{d}(#1)\ }
 \providecommand{\pd}[1]{\partial_{#1}}
+\providecommand{\rpd}[1]{\overrightarrow{\partial_{#1}}}
+\providecommand{\lpd}[1]{\overleftarrow{\partial_{#1}}}
 \providecommand{\pu}[1]{\partial^{#1}}
 \providecommand{\wicon}[2]{\Op{#1}^{\bullet} \Op{#2}^{\bullet}}
 \providecommand{\tOrd}{\mathcal{T}}
 \providecommand{\ps}{\slashed{p}}
 \providecommand{\ds}{\slashed{\partial}}
+\providecommand{\ten}[1]{\mathsf{#1}}
 \allowdisplaybreaks
 \begin{document}
 \frontmatter
@@ -98,31 +102,32 @@
 
 \chapter{Quantum Electrodynamics}
 \label{cha:quant-electr}
+\input{chapters/qed}
 
 \chapter{Quantum Electrodynamics Scattering}
 \label{cha:quant-electr-scatt}
+\input{chapters/qed-scatter}
+% \appendices \twocolumn
 
-\appendices \twocolumn
+% \chapter{Geometry \& Linear Algebra}
+% \label{cha:linearalgebra}
 
-\chapter{Geometry \& Linear Algebra}
-\label{cha:linearalgebra}
+% \input{chapters/chapter-2}
 
-\input{chapters/chapter-2}
+% \chapter{Calculus}
+% \label{cha:calculus}
 
-\chapter{Calculus}
-\label{cha:calculus}
+% %\input{chapters/calculus-appendix}
 
-%\input{chapters/calculus-appendix}
+% \chapter{Special Relativity}
+% \label{cha:specialrelativity}
 
-\chapter{Special Relativity}
-\label{cha:specialrelativity}
+% \input{chapters/chapter-0}
 
-\input{chapters/chapter-0}
+% \chapter{Quantum Mechanics}
+% \label{cha:quantummechanics}
 
-\chapter{Quantum Mechanics}
-\label{cha:quantummechanics}
-
-\input{chapters/chapter-1}
+% \input{chapters/chapter-1}
 
 
 

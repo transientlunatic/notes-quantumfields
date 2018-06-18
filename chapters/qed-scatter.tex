@@ -1,0 +1,577 @@
+We can now use the QED Lagrangian to calculate scattering
+cross-sections; the amplitudes can be found in the same way that they
+can be found for scalar fields. The interaction is
+
+\begin{equation}
+  \label{eq:126}
+\Lag~{int} = - e \bar{\psi} \gamma_{\mu} A^{\mu} \psi
+\end{equation}
+so the S-matrix is
+\begin{align*}
+  \bra{f} \Op{S} \ket{i} &= \bra{f} \tOrd e^{i \int \dd[4]{x} \Lag~{int}} \ket{i} \\
+&= \braket{f}{i} - ie \int \dd[4]{x} \bra{f} \tOrd \bar{\psi}(x) \gamma_{\mu} A^{\mu}(x) \psi(x) \ket{i} \\
+& \quad + (-ie)^2 \int \dd[4]{x} \dd[4]{y} \bra{f} S_2 \ket{i} + \cdots
+\end{align*}
+For 
+\[ S_2=  \tOrd \bar{\psi}(x) \gamma_{\mu} A^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} A^{\nu}(y) \psi(y) \]
+
+The first term does not produce scattering, and the second term are
+processes of the form
+\begin{tfeynin}[0.6ex]
+  \tfcol{a,g,b} \tfcol{f,c,l} \tfcol{y,d,z} \tf[f]{a,c} \tf[f]{b,c} \tf[p]{c,d}
+\end{tfeynin}
+and this cannot conserve momentum if all three of the particles are
+on-shell, since $p_{\gamma}^2 = (p_{e^-}+p_{e^+})^2 \neq 0$, so the
+scattering must come from the $\mathcal{O}(e^2)$ term. So, employing
+Wick's theorem,
+
+\renewcommand{\arraystretch}{2}
+\begin{tabular}{>{$}r<{$} >{$} l<{$} c}
+\multicolumn{2}{l}{$\tOrd \bar{\psi}(x) \gamma_{\mu} A^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} A^{\nu}(y) \psi(y)$} & \\
+ = & \normbracket{ \bar{\psi}(x) \gamma_{\mu} A^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} A^{\nu}(y) \psi(y) } & \\
++ &
+\contraction{ {:}\bar{\psi}(x) \gamma_{\mu} }
+            { A }
+            { {}^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} }
+            { A }
+\normbracket{\bar{\psi}(x) \gamma_{\mu} A^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} A^{\nu}(y) \psi(y)} & 
+\begin{tfeynin}
+  \tfcol{a1, a2}
+  \tfcol{b1, b2}
+  \tf[f]{a1,d1,a2}[r]
+  \tf[f]{b1,c1,b2}[l]
+  \tf[p]{d1,c1}
+\end{tfeynin}                                                                                         
+\\
++ &
+\contraction{ {:} }
+            { \bar{\psi} }
+            { (x) \gamma_{\mu} A^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} A^{\nu}(y) }
+            { \psi }
+\normbracket{\bar{\psi}(x) \gamma_{\mu} A^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} A^{\nu}(y) \psi(y)}&
+\multirow{2}{1.5cm}{
+\begin{tfeynin}[1ex]
+  \tfcol{a1,a2,a3}
+  \tfcol{b1,b2,b3}
+  \tfcol{c1,c2,c3}
+  \tfcol{d1,d2,d3}
+  \tf[f]{a1,b2,c2,d1} \tf[p]{a3,b2} \tf[p]{c2,d3}
+\end{tfeynin}
+\begin{tfeynin}[1ex]
+  \tfcol{a1,a2,a3,a4}
+  \tfcol{b1,b2,b3,b4}
+  \tfcol{c1,c2,c3,c4}
+  \tf[f]{a4,b3,b2,c1} \tf[p]{b3,c4} \tf[p]{a1,b2}
+\end{tfeynin}
+\begin{tfeynin}[1ex]
+  \tfcol{a1,a2,a3,a4}
+  \tfcol{b1,b2,b3,b4}
+  \tfcol{c1,c2,c3,c4}
+  \tf[f]{a4,b3,b2,a1} \tf[p]{b3,c4} \tf[p]{c1,b2}
+\end{tfeynin}
+}
+ \\
++ &
+\contraction{ \bar{\psi} \bar{\psi}(x) \gamma_{\mu} A^{\mu} (x)}
+            { \psi }
+            { (x) }
+            { \bar{\psi} }
+\normbracket{\bar{\psi}(x) \gamma_{\mu} A^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} A^{\nu}(y) \psi(y)}&
+ \\
++ &
+\contraction[1ex]
+            { {:} }
+            { \bar{\psi} }
+            { (x) \gamma_{\mu} A^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} A^{\nu}(y) }
+            { \psi }
+\contraction
+            { {:} \bar{\psi}(x) \gamma_{\mu} }
+            { A }
+            { {:\,}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} }
+            { A }
+\normbracket{\bar{\psi}(x) \gamma_{\mu} A^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} A^{\nu}(y) \psi(y)}& 
+\multirow{2}{1.5cm}{
+\begin{tfeynin}[1ex][0.5ex]
+  \tfcol{a1,a2,a3,a4}
+  \tfcol{b1,b2,b3,b4}
+  \tfcol{c1,c2,c3,c4}
+  \tfcol{d1,d2,d3,d4}
+  \tf[f]{a1,b2} \tf[f, left]{b2,c3} \tf[p, right]{b2,c3} \tf[f]{c3,d4}
+\end{tfeynin}
+}
+\\
++ &
+\contraction[1.5ex]
+            { \bar{\psi} \bar{\psi}(x) \gamma_{\mu} A^{\mu} (x)}
+            { \psi }
+            { (x) }
+            { \bar{\psi} }
+\contraction
+            { {:} \bar{\psi}(x) \gamma_{\mu} }
+            { A }
+            { {:\,}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} }
+            { A }
+\normbracket{\bar{\psi}(x) \gamma_{\mu} A^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} A^{\nu}(y) \psi(y)}& \\
++ &
+\contraction{ {:} }
+            { \bar{\psi} }
+            { (x) \gamma_{\mu} A^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} A^{\nu}(y) }
+            { \psi }
+\contraction[.7ex]
+            { \bar{\psi} \bar{\psi}(x) \gamma_{\mu} A^{\mu} (x)}
+            { \psi }
+            { (x) }
+            { \bar{\psi} }
+\normbracket{\bar{\psi}(x) \gamma_{\mu} A^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} A^{\nu}(y) \psi(y)}&
+\begin{tfeynin}[0.5ex][0.05em]
+  \tfcol{a1,a2,a3,a4}
+  \tfcol{b1,b2,b3,b4}
+  \tfcol{c1,c2,c3,c4}
+  \tfcol{d1,d2,d3,d4}
+  \tf[p]{a1,b2} \tf[f, left]{b2,c3} \tf[f, left]{c3,b2} \tf[p]{c3,d4}
+\end{tfeynin}
+ \\
++ &
+\contraction[.7ex]
+            { {:} \bar{\psi}(x) \gamma_{\mu} }
+            { A }
+            { {:\,}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} }
+            { A }
+\contraction[1.1ex]
+            { {:} }
+            { \bar{\psi} }
+            { (x) \gamma_{\mu} A^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} A^{\nu}(y) }
+            { \psi }
+\contraction[2ex]
+            { \bar{\psi} \bar{\psi}(x) \gamma_{\mu} A^{\mu} (x)}
+            { \psi }
+            { (x) }
+            { \bar{\psi} }
+\normbracket{\bar{\psi}(x) \gamma_{\mu} A^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} A^{\nu}(y) \psi(y)}& 
+\begin{tfeynin}[1ex][0.5ex]
+  \tfcol{b2,b3}
+  \tfcol{c2,c3}
+  \tf[p]{b2,c3} \tf[f, left]{b2,c3} \tf[f, left]{c3,b2}
+\end{tfeynin}
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+
+Consider the scattering of two electrons, $e^- e^- \to e^- e^-$, where
+the initial state is $\ket{\vec{p}_1, \vec{p}_2}$, and the final state
+$\ket{\vec{p}_3, \vec{p}_4}$. In principle the states have particular
+spins, but these are supressed in notation for the moment. Only one term, 
+\begin{tfeynin}
+  \tfcol{a1, a2}
+  \tfcol{b1, b2}
+  \tf[f]{a1,d1,a2}[r]
+  \tf[f]{b1,c1,b2}[l]
+  \tf[p]{d1,c1}
+\end{tfeynin}
+contributes to scattering, so
+\[ -e^2 \int \dd[4]{x} \dd[4]{y} \bra{0} a(\vec{p}_4) a(\vec{p}_3) 
+S~{2a} 
+\hcon{a}(\vec{p}_1) \hcon{a}(\vec{p}_2) \ket{0}
+\]
+for $S~{2a} = \contraction{ {:}\bar{\psi}(x) \gamma_{\mu} }
+            { A }
+            { {}^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} }
+            { A }
+\normbracket{\bar{\psi}(x) \gamma_{\mu} A^{\mu}(x) \psi(x) \bar{\psi}(y) \gamma_{\nu} A^{\nu}(y) \psi(y)}$
+Then, since 
+\[ \Op{\psi}(x) = \int \nm{p} A \] for \[ A = \sum_s \qty(\Op{a}^{(s)} (\vec{p}) u^{(s)}(p) e^{-ip \vdot x} + \hOp{b}^{(s)}(\vec{p}) v^{(s)}(p) e^{ip \vdot x} ) \] 
+All the antiparticle operators vanish, and we eventually reach
+\begin{align*}
+  e^2 \bigg( & \quad \bar{u}(p_3) \gamma_{\mu} u(p_1) \frac{g^{\mu \nu}}{(p_3-p_1)^2} \bar{u}(p_4) \gamma_{\nu} u(p_2) \\ & - \bar{u}(p_4) \gamma_{\mu} u(p_1) \frac{g^{\mu \nu}}{(p_4-p_1)^2} \bar{u}(p_3) \gamma_{\nu} u(p_2) \bigg) \\ & \times (2 \pi)^4 \delta^4(p_1+p_2-p_3-p_4)
+\end{align*}
+
+\section{Feynman rules}
+\label{sec:feynman-rules-1}
+
+The transition amplitudes can be calculated directly from Feynman
+diagrams using the Feynman rules for QED in the Feynman gauge.
+
+\begin{tabular}{l >{$} c <{$} >{} c <{}}
+Incoming electron & u & \begin{tfeynin}[1em] \tfcol{a}\tfcol{b}\tf[f]{a,b} \end{tfeynin}  \\
+Outgoing electron & \bar{u} & \begin{tfeynin}[1em] \tfcol{a}\tfcol{b}\tf[f]{a,b} \end{tfeynin} \\
+Incoming positron & \bar{v} & \begin{tfeynin}[1em] \tfcol{a}\tfcol{b}\tf[f]{b,a} \end{tfeynin} \\
+Outgoing positron & v & \begin{tfeynin}[1em] \tfcol{a}\tfcol{b}\tf[f]{b,a} \end{tfeynin} \\
+Incoming photon   & \epsilon^{\mu} & \begin{tfeynin}[1em] \tfcol{a}\tfcol{b}\tf[p]{a,b} \end{tfeynin} \\
+Outgoing photon   & \epsilon^{\mu *} & \begin{tfeynin}[1em] \tfcol{a}\tfcol{b}\tf[p]{a,b} \end{tfeynin} \\
+Internal electron &  i \frac{\ps + m}{p^2 - m^2} & \begin{tfeynin}[1em] \tfcol{a}\tfcol{b}\tf[f]{a,b} \end{tfeynin} \\
+Internal photon   & -i g$_{\mu \nu} p^{-2}$ & \begin{tfeynin}[1em] \tfcol{a}\tfcol{b}\tf[p]{a,b} \end{tfeynin} \\
+Vertices          & i e Q \gamma^{\mu} & \begin{tfeynin}[0.6ex]  \tfcol{a,g,b} \tfcol{f,c,l} \tfcol{y,d,z} \tf[f]{a,c} \tf[f]{b,c} \tf[p]{c,d} \end{tfeynin}
+\end{tabular}
+
+for $Q$ the fermion charge. Gamma matrices and spinors don't commute,
+so the order of spin-lines is important, and so a diagram should be
+written left to right against the fermion flow. There are also two
+additional details:
+
+\begin{tabular}{l c}
+Closed loops & \begin{tfeynin}[1em] \tfcol{a}\tfcol{b}\tfcol{c}\tfcol{d}\tf[p]{a,b}\tf[p]{c,d}\tf[f,left]{b,c}\tf[f,left]{c,b} \end{tfeynin}
+\end{tabular} \\
+Integrate over loop momentum, $\int \frac{\dd[4]{k}}{(2 \pi)^4}$, and
+include factor of $-1$ if a fermion loop.
+
+\begin{tabular}{l c}
+Fermi statistics & $ \begin{tfeynma}[1em] \tfcol{a1,a2,a3,a4}\tfcol{b1,b2,b3,b4}\tfcol{c1,c2,c3,c4}\tf[f]{a4,b3, c4}\tf[f]{a1,b2,c1} \tf[p]{b2,b3} \end{tfeynma} - 
+\begin{tfeynma}[2em][0.4ex] \tfcol{a1,a2,a3,a4,a5}\tfcol{b1,b2,b3,b4,b5} \tfcol{c1,c2,c3,c4,c5}
+                     \tf[f]{a5,b2,c1}
+                     \tf[f]{a1,b4,c5} 
+                     \tf[p]{b2,b4} 
+\end{tfeynma}$
+\end{tabular}
+
+The rules provide $i \mathcal{M}$, and the transition amplitude is
+\[ S_{fi} = \bra{f} \Op{S} \ket{i} = \braket{f}{i} + (2 \pi)^4
+\delta^4(p_f - p_i) \mathcal{M} = 1 + i T_{fi} \]
+writing $\Op{S} = 1 + i \Op{T}$ to remove the non-scattering piece.
+
+\section{Electron-muon scattering}
+\label{sec:electr-muon-scatt}
+
+Consider an electron-muon scattering, where non-identical particles
+allow just one diagram to be considered
+\begin{equation}
+\label{eq:127}
+i \mathcal{M} =- e^{2} \bar{u}(k') \gamma^{\mu} u(k) \frac{g_{\mu \nu}}{q^2} \bar{u}(p') \gamma^{\nu} u(p)
+\end{equation}
+\[ \begin{tfeynin}
+  \tfcol{a1,a2,a3,a4}\tfcol{b1,b2,b3,b4}\tfcol{c1,c2,c3,c4}\tf[f]{a4,b3,
+    c4}\tf[f]{a1,b2,c1} \tf[p]{b2,b3} \end{tfeynin} \]
+We need to square this to find the total probability, then average
+over initial spins, and sum over the final spins.
+\begin{align*} 
+\frac{1}{4} \sum_{\text{spins}} \abs{\mathcal{M}}^2 &= \frac{e^2}{q^4} \frac{1}{4} \sum_{\text{spins}}
+\qty{ \qty[ \bar{u}(k') \gamma^{\mu} u(k)  ] \qty[ \bar{u}(k') \gamma^{\mu} u(k)  ]^{*}} \\ & \qquad \qquad \quad
+\qty{ \qty[ \bar{u}(p') \gamma_{\mu} u(p)  ] \qty[ \bar{u}(p') \gamma_{\nu} u(p)  ]^{*}} \\
+&= \frac{e^4}{q^4} \Lag^{\mu \nu}(k,k') \Lag_{\mu \nu}(p,p')
+\end{align*}
+But
+\begin{align*}
+  \qty[\bar{u}(k') \gamma^{\mu} u(k)]^{*} &= \qty[\hcon{u} (k') \gamma^0 \gamma^{\mu} u(k)]^{\dagger} \\
+&= \hcon{u}(k) \hcon{\gamma^{\mu}} \hcon{\gamma^0} u(k') \\
+&= \hcon{u}(k) \gamma^0\gamma^{\mu}\gamma^0\gamma^0 u(k') \\
+&= \bar{u}(k) \gamma^{\mu} u(k')
+\end{align*}
+The various $u$ elements are 4-component tensors, and the $\gamma$ are
+$4 \times 4$ matrices, so
+\begin{align*} \Lag^{\mu \nu}(k,k') = \half \sum_{s=1,2} \sum_{s'=1,2} &\bar{u}_i^{(s')}(k') [\gamma^{\mu}]_{ij} u_j^{(s)}(k)  \\
+\times& \bar{u}_m^{(s)}(k) [\gamma^{\nu}]_{mn} u_n^{(s')}(k')
+\end{align*}
+with implicit summation over $i,j,m,n$. We can simplify this with the
+completeness relations of spinors.
+\[ \sum_{s=1,2} u_i^{(s)}(k) \bar{u}_j^{(s)}(k) = k_{\mu} [\gamma^{\mu}]_{ij} + m \delta_{ij} \]
+Thus
+\begin{align*}
+  \Lag^{\mu \nu}(k,k') &= \half \sum_{s'=1,2} u_n^{(s')}(k') \bar{u}_i^{(s')}(k') [\gamma^{\mu}]_{ij} \\
+& \quad \times \sum_{s=1,2} u_j^{(s)}(k) \bar{u}_m^{(s)}(k) [\gamma^{\nu}]_{mn} \\
+&= \half (k'_{\rho} [\gamma^{\rho}]_{ni} + m \delta_{ni} ) [\gamma^{\mu}]_{ij} \\& \quad\times (k_{\sigma} [\gamma^{\sigma}]_{jm} + m \delta_{jm}) [\gamma^{\nu}]_{mn} \\
+&= \half \tr[(\slashed{k}' +m)\gamma^{\mu}(\slashed{k}+m)\gamma^{\nu}]
+\end{align*}
+Using the trace identities for $\tr{\gamma^{\mu}\gamma^{\nu}}$ and $\tr(\gamma^{\mu} \gamma^{\nu} \gamma^{\lambda} \gamma^{\kappa})$,
+\begin{equation}
+  \Lag^{\mu \nu}(k,k') = 2 \qty( k^{\mu} k'^{\nu} + k^{\nu} k'^{\mu} - \qty( k \cdot k' - m^2) g^{\mu \nu})
+\end{equation}
+Thus
+\begin{align*}
+  \frac{1}{4} \Sum~{spins} \abs{\mathcal{M}}^2 &= \frac{e^4}{q^4} 4 \qty( k^{\mu} k'^{\nu} + k^{\nu} k'^{\mu} - \qty( k \cdot k' - m~e^2) g^{\mu \nu}) \\ & \qquad \times 
+ \qty( p_{\mu} p'_{\nu} + p_{\nu} p'_{\mu} - \qty( p \cdot p' - m~\mu^2) g_{\mu \nu}) \\ 
+&= 8 \frac{e^{2}}{q^4} ( (k' \cdot p')(k \cdot p) + (k' \cdot p)(k \cdot p') \\ & \qquad \quad- m~e^2(p' \cdot p) - m~\mu^2(k' \cdot k) + 2 m~e^2 m~\mu^2 )
+\end{align*}
+At high energies $p^2 \gg m~e^2, m_{\mu}^2$, so the masses can be ignored. Then
+\[ \frac{1}{4} \sum~{spins} \abs{\mathcal{M}}^2 \approx 8 \frac{e^4}{(k-k')^4} ((k' \cdot p')(k \cdot p) + (k' \cdot p)(k \cdot p'))\]
+
+We can re-write these in terms of the Mandlestam variables,
+\begin{subequations}
+\begin{align}
+  s &= (k+p)^2 \approx 2 k \cdot p \approx 2 k' \cdot p' \\
+t &= (k-k')^2 \approx - 2 k \cdot k' \approx -2 p \cdot p' \\
+u &= (k - p')^2 \approx -2 k \cdot p' \approx -2 k' \cdot p
+\end{align}
+\end{subequations}
+Noting that $s+t+u = m_a^2 + m_b^2 + m_c^2 + m_d^2 \approx 0$. $s$ is
+the square of the momentum flowing in the time direction, while $t$ is
+the square of the momentum flowing in the space direction.
+
+Thus
+\begin{equation}
+  \frac{1}{4} \sum~{spins} \abs{\mathcal{M}}^2 = 2e^4 \frac{s^2 + u^2}{t^2}
+\end{equation}
+
+\section{Cross-sections}
+\label{sec:cross-sections}
+
+We have $\abs{\mathcal{M}}^2$, so to turn it into a cross-section,
+recall
+\begin{align*}
+  T~{fi} &= -i (2 \pi)^4 \delta^4(p~f - p~i) \mathcal{M} \\
+\implies \abs{T~{fi}}^2 &= \qty[(2 \pi)^4 \delta^4(p~f - p~i)]^2 \abs{\mathcal{M}}^2 \\
+&= (2 \pi)^4 \delta^4(p~f - p~i) VT \abs{\mathcal{M}}^2
+\end{align*}
+Since
+\begin{align*} (2 \pi)^4 \delta^4(p~f-p~i) &= \int \dd[4]{x} e^{i(p~f-p~i)\cdot x} \\
+&= \int_{-T/2}^{T/2} \dd{t} \int_V \dd[3]{x} = VT 
+\end{align*}
+So the transition probability per unit time and per unit volume is
+\begin{equation}
+  \frac{\abs{T~{fi}}^2}{VT} = (2 \pi)^4 \delta^4(p~f - p~i) \abs{\mathcal{M}}^2
+\end{equation}
+The cross-section is then the probability of a transition per unit
+volume and per unit time, multiplied by the number of final states
+divided by the initial flux:
+\[ \dd{\sigma} = \frac{\abs{T~{fi}}^2}{VT}
+\frac{\text{N$^{{\text{\underline{o}}}}$ final states}}{\text{initial
+    flux}} \]
+The initial flux can be found by considering the lab frame, where
+particle A, moving with a velocity $\vec{v}~A$ hit particle B which is
+stationary. The number of particles like A in the beam, passing
+through a unit volume per unit time is $\abs{\vec{v}~A} 2 E$, while
+the number of particles like $B$ per unit volume in the target is
+$2E$. The initial flux in a volume $V$ is then
+$\abs{\vec{v}~A} 2E~A 2 E~B$, which can be written in covariant form
+\[ \abs{\vec{v}~A} 2E~A 2E~B = \sqrt{\qty[(p~A \cdot p~B)^2 - m~A^2
+  m~B^2]} \]
+This must be true for a collider, where $A$ and $B$ are both moving,
+since the lab frame and the centre-of-mass frame are related by a
+Lorentz boost.
+
+To find the number of final states, we count how many momentum states
+can fit in a volume, $V$; to have no particle flow through the
+boundaries of the box we need periodic boundary conditions. We have
+$L p_x = 2 \pi n$, and so the number of states between
+$p_x and p_x + \dd{p_x}$ is $ \frac{L}{2\pi} \dd{p_x}$, so in a volume
+$V$
+\[ \qty( \frac{L}{2 \pi} \dd{p_x} ) \qty( \frac{L}{2 \pi} \dd{p_y})
+\qty( \frac{L}{2 \pi} \dd{p_z}) = \frac{V}{(2 \pi)^3} \dd[3]{p} \]
+There are $2EV$ particles per unit volume, $V$, so the number of final
+states per particle is
+\[ \frac{1}{(2 \pi)^3}\frac{\dd[3]{p}}{2E} \]
+Recalling
+\[ \int \frac{1}{(2 \pi)^3} \frac{\dd[3]{p}}{2E} = \int
+\frac{\dd[4]{p}}{(2 \pi)^4} 2\pi \delta(p^2-m^2) \]
+thi is clearly covariant.
+
+Assembling all of this,
+\begin{equation}
+  \dd{\sigma} = \frac{1}{F} \abs{\mathcal{M}}^2 \dd{\text{LIPS}}
+\end{equation}
+for $F$, the flux,
+\[ F = 4 \sqrt{\qty[ (p~A \cdot p~B)^2 - m~A^2 m~B^2]} \]
+and the Lorentz invariant phase space,
+\begin{align*}
+  \dd{\text{LIPS}} &= (2 \pi)^4 \delta^4(p~c + p~d - p~a - p~b) \\
+& \quad 2 \pi \delta(p~c^2 - m~c^2) 2 \pi \delta(p~d^2 - m~d^2) \\
+& \quad \frac{\dd[4]{p~c}}{(2 \pi)^4} \frac{\dd[4]{p~d}}{(2 \pi)^4}
+\end{align*}
+
+This is simplified in the centre-of-mass frame, defined as having
+$\vec{p}~a = - \vec{p}~b$, and $E~a + E~b = \sqrt{s}$, so
+$p~a = (E~a, \vec{p}~a)$, and $p~b = (E~b, - \vec{p}~a)$, with
+\[ \abs{\vec{p}~a} = \frac{1}{4s} \sqrt{\lambda(s, m~a^2 m~b^2)} \]
+\[ \lambda(\alpha, \beta, \gamma) \equiv \alpha^2 + \beta^2 + \gamma^2 - 2 \alpha \beta - 2 \alpha \gamma - 2 \beta \gamma \]
+\[ E~a = \frac{s+m~a^2 - m~b^2}{2 \sqrt{s}} \qquad E~b= \frac{s - m~a^2 + m~b^2}{2 \sqrt{s}} \]
+So the flux becomes
+\begin{align*}
+  F &= 4 \sqrt{\qty[(p~a \cdot p~b)^2 - m~a^2 m~b^2]} \\ &= 4 ( \abs{\vec{p}~a} E~b + \abs{\vec{p}~b} E~a ) \\ F &= 4 \abs{\vec{p}~a} \sqrt{s}
+\end{align*}
+Also, $\vec{p}~c = - \vec{p}~d$, and $E~c+E~d = \sqrt{s}$, with
+relations analogous to $p~a$ and $p~b$, so the phase-space measure
+becomes
+\begin{align*}
+  \dd{\text{LIPS}} &= (2 \pi)^4 \delta^4(p~c + p~d - p~a - p~b) \frac{1}{2 E~c} \frac{\dd[3]{\vec{p}~c}}{(2 \pi)^3} \frac{1}{2 E~d} \frac{\dd[3]\vec{p}~d}{(2 \pi)^3} \\
+&= \frac{1}{4 \pi^2} \delta(E~c + E~d - \sqrt{s}) \frac{1}{4 E~c E~d} \dd[3]{\vec{p}~c} \\
+&= \frac{1}{4 \pi^2} \delta(E~c + E~d - \sqrt{s}) \frac{1}{4 E~c E~d} \abs{\vec{p}~c}^2 \dd{\abs{\vec{p}~c}} \dd{\Omega} \\
+&= \frac{1}{16 \pi^2} \delta( \sqrt{s}-E~c - E~d) \frac{\abs{\vec{p}~c}}{\sqrt{s}} \dd{\sqrt{s}} \dd{\Omega} \\
+\dd{\text{LIPS}}&= \frac{1}{16 \pi^2} \frac{\abs{\vec{p}~c}}{\sqrt{s}} \dd{\Omega}
+\end{align*}
+with 
+\[ \dv{\abs{\vec{p}~c}}{\sqrt{s}} = \frac{E~c E~d}{\abs{\vec{p}~c} \sqrt{s}} \]
+
+Assembling all of this,
+\begin{equation}
+  \eval{\dv{\sigma}{\Omega}}~{CM} = \frac{1}{64 \pi^2} \frac{\abs{\vec{p}~c}}{\abs{\vec{p}~a}} \frac{1}{s} \abs{\mathcal{M}}^2
+\end{equation}
+
+Returning to the scattering process with $m~e = m_{\mu} = 0$,
+\begin{align*}
+  \dv{\sigma}{\Omega} &= \frac{1}{4} \sum~{spins} \frac{1}{64 \pi^2} \frac{\abs{\vec{p}~c}}{\abs{\vec{p}~a}} \frac{1}{s} \abs{\mathcal{M}}^2 \\
+& \frac{1}{64 \pi^2} \frac{1}{s} \frac{1}{4} \sum~{spins} \abs{\mathcal{M}}^2 \\
+&= \frac{e^4}{32 \pi^2} \frac{1}{s} \frac{s^2 + u^2}{t^2} \\
+&= \frac{\alpha^2}{2s} \frac{s^2 + u^2}{t^2}
+\end{align*}
+for $\alpha \equiv e^2/(4 \pi)$ the fine structure constant. In terms of the angle between $a$ and $c$,
+\begin{align*}
+  t& \equiv (p~a - p~c)^2 = -2 p~a \cdot p~c = -\frac{s}{2}(1-\cos(\theta))\\
+u & \equiv (p~a - p~d)^2 = - 2p~a \cdot p~d = - \frac{s}{2}(1+cos(\theta))
+\end{align*}
+thus
+\begin{equation}
+  \dv{\sigma}{\Omega} = \frac{\alpha^2}{8s} \frac{4 + (1+\cos(\theta))^2}{(1-\cos(\theta))^2}
+\end{equation}
+which is divergent for small angles,
+\[ \dv{\sigma}{\Omega} \sim \frac{4 \alpha^2}{s} \frac{1}{\theta^4}
+\quad \text{ as $\theta \to 0$} \]
+which has the same divergence as the Rutherford scattering formula.
+
+\section{Crossing symmetry}
+\label{sec:crossing-symmetry}
+
+Generally in a Feynman diagram the incoming particles with momentum
+$p$ are equivalent to the outgoing antiparticles with momentum $-p$,
+and so the result for $e^- \mu^- \to e^- \mu^-$ can be used to find
+the cross-section for $e^+ e^- \to \mu^+ \mu^-$, so
+\begin{align*}
+  s &= (p~a + p~b)^2 & s &= (p~a - p~c)^2 \\
+t &= (p~a - p~c)^2 & t &= (p~a + p~d)^2 \\
+u &= (p~a - p~d)^2 & u &= (p~a - p~d)^2
+\end{align*}
+i.e. $s \leftrightarrow t$. 
+
+Then
+\[ \frac{1}{4} \sum~{spins} \abs{\mathcal{M}}^2 = 2 e^4 \frac{t^2 + u^2}{s^2} \implies \dv{\sigma}{\Omega} = \frac{\alpha^2}{2s} \frac{t^2+u^2}{s^2} \]
+Then, with $\theta$ the angle between $e^-$ and $\mu^-$,
+\[ t = - \frac{s}{2} (1 - \cos(\theta)), \quad u = - \frac{s}{2} (1 + \cos(\theta)) \]
+so
+\begin{equation}
+  \dv{\sigma}{\Omega} = \frac{\alpha^2}{4s} ( 1+ \cos[2](\theta) )
+\end{equation}
+giving the total cros-section,
+\[ \sigma~{tot} = \frac{\alpha^2}{4s} 2 \pi \int_{-1}^{+1} (1+ \cos[2](\theta)) \dd{(\cos(\theta))} = \frac{4 \pi}{3} \frac{\alpha^2}{s} \]
+
+\section{Identical particles}
+\label{sec:identical-particles}
+
+Thus far the particles in the final state have all been
+distinguishable; if they are identical then there are additional Feynman diagrams, 
+
+\[ i \mathcal{M}~1 = 
+ \begin{tfeynma}[1em] \tfcol{a1,a2,a3,a4}\tfcol{b1,b2,b3,b4}\tfcol{c1,c2,c3,c4}\tf[f]{a4,b3, c4}\tf[f]{a1,b2,c1} \tf[p]{b2,b3} \end{tfeynma} 
+= ie^2 \frac{1}{t} \bar{u}(p~c) \gamma^{\mu} u(p~a) \bar{u}(p~d) \gamma_{\mu} u(p~b)
+\]
+\begin{align*} i \mathcal{M}~2 &= 
+\begin{tfeynma}[2em][0.4ex] \tfcol{a1,a2,a3,a4,a5}\tfcol{b1,b2,b3,b4,b5} \tfcol{c1,c2,c3,c4,c5}
+                     \tf[f]{a5,b2,c1}
+                     \tf[f]{a1,b4,c5} 
+                     \tf[p]{b2,b4} 
+\end{tfeynma} \\&
+= ie^2 \frac{1}{u} \bar{u}(p~d) \gamma^{\mu} u(p~d) \gamma^{\mu} u(p~a) \bar{u}(p~c) \gamma_{\mu} u(p~b)
+\end{align*}
+(here $p~c$ and $p~d$ are interchanged). The diagrams must be added
+with a relative minus-sign;
+$ \mathcal{M} = \mathcal{M}_1 - \mathcal{M}_2$. Since the final state
+particles are identical, the diagrams are indistinguishable, so must
+be summed coherently, so
+\[ \abs{\mathcal{M}}^2 = \abs{\mathcal{M}_1 - \mathcal{M}_2}^2 =
+\abs{\mathcal{M}_1}^2 + \abs{\mathcal{M}_2}^2 - 2 \Re \mathcal{M}_1
+\mathcal{M}_2^{*} \]
+We have the interference between the contributions,
+\begin{equation}
+  \dv{\sigma}{\Omega} = \frac{\alpha^2}{2s} \qty( \frac{s^2+u^2}{t^2} + \frac{s^2 + t^2}{u^2} + 2 \frac{s^2}{tu} )
+\end{equation}
+
+\section{Compton scattering}
+\label{sec:compton-scattering}
+
+Compton scattering is the scattering of a photon off an electron,
+\[
+\begin{tfeynma}[1.5ex]
+  \tfcol{a1,a2,a3}
+  \tfcol{b1,b2,b3}
+  \tfcol{c1,c2,c3}
+  \tfcol{d1,d2,d3}
+  \tf[f]{a1,b2,c2,d1} \tf[p]{a3,b2} \tf[p]{c2,d3}
+\end{tfeynma}
++
+\begin{tfeynma}[1.5ex]
+  \tfcol{a1,a2,a3}
+  \tfcol{b1,b2,b3}
+  \tfcol{c1,c2,c3}
+  \tfcol{d1,d2,d3}
+  \tf[f]{a1,b2,c2,d1} \tf[p]{d3,b2} \tf[p]{c2,a3}
+\end{tfeynma}
+\]
+Putting in the Feynman rules for this, with $m~e=0$,
+\begin{equation}
+  \label{eq:128}
+\frac{1}{4} \sum~{spins} \abs{\mathcal{M}}^2 = -2e^4 \qty( \frac{u}{s} + \frac{s}{u} )
+\end{equation}
+The interference term has vanished, and the two processes are
+distinguishable from the spins and polarisations of the final states.
+
+\section{The Ward identity}
+\label{sec:ward-identity}
+
+To reproduce the result for Compton scattering we must sum over the
+polarisation states of the photon, so
+\[ \sum~{spins} \epsilon^{\mu *}~{(T)} \epsilon^{\nu}~{(T)} \to -
+g^{\mu \nu} \]
+This sum is over the transverse states only, but the right-hand side
+is true for virtual photons only; the sum over all four polarisations.
+
+For example if the photon momentum is $k^{\mu} = (k,0,0,k)$ then the
+suitable transverse polarisation vectors are
+$\epsilon_1^{\mu} =(0,1,0,1)$, and $\epsilon_2^{\mu} = (0,0,1,0)$. We
+really have a separate matrix element for each photon
+polarisation. Writing
+$\mathcal{M}_{(\lambda)} = \epsilon_{(\lambda)}^{\mu}
+\tilde{\mathcal{M}}_{\mu}$, then
+\[ \sum_{\lambda=1,2} \abs{\mathcal{M}_{(\lambda)}}^2 = \abs{\tilde{\mathcal{M}}_1}^2+ \abs{ \tilde{\mathcal{M}}_2}^2 \]
+However, the matrix element has another property, the Ward indentity,
+\[ k^{\mu} \tilde{\mathcal{M}}_{\mu} = 0 \]
+Which is a result of the gauge invariance, and implies
+$\tilde{\mathcal{M}}_0 = \tilde{\mathcal{M}}_3$, letting us write
+\begin{align*} \sum_{\lambda=1,2} \abs{ \tilde{\mathcal{M}}_{(\lambda)}}^2 &= - \abs{ \tilde{\mathcal{M}}_0}^2 +  \abs{ \tilde{\mathcal{M}}_1}^2 +  \abs{ \tilde{\mathcal{M}}_2}^2 +  \abs{ \tilde{\mathcal{M}}_3}^2 \\
+&= - g_{\mu \nu}  \tilde{\mathcal{M}}^{\mu} \tilde{\mathcal{M}}^{\nu *}
+\end{align*}
+
+\section{Decay rates}
+\label{sec:decay-rates}
+
+A decay has a width $\dd{\Gamma}$, given by
+\[ \dd{\Gamma} = \frac{\abs{\kappa~{fi}}^2}{VT} \times \frac{\text{{N$^{{\text{\underline{o}}}}$ final states}}}{\text{{N$^{{\text{\underline{o}}}}$ decaying particles per unit volume}}}\]
+For the decay $a \to b+c$ then
+\[ \frac{\abs{\kappa~{fi}}^2}{VT} = (2 \pi)^2 \delta^4(p~a - p~b - p~c) \abs{\mathcal{M}}^2 \]
+The number of final states is
+\[ \frac{1}{2E~b} \frac{\dd[3]{\vec{p}~b}}{(2 \pi)^3} \frac{1}{2E~c} \frac{\dd[3]{\vec{p}~c}}{(2 \pi)^3} 
+= \frac{\dd[3]{\vec{p}~b}}{(2 \pi)^3} \frac{\dd[3]{\vec{p}~c}}{(2 \pi)^3} (2 \pi) \delta(p~b^2-m~b^2) (2 \pi) \delta(p~c^2 - m~c^2) \]
+While the number of decay particles per unit volume is 
+\[ 2E~a \]
+Thus
+\begin{equation}
+  \dd{\Gamma} = \frac{1}{2E~a} \abs{\mathcal{M}}^2 \dd{\text{LIPS}}
+\end{equation}
+
+In the rest frame of particle a, 
+\[ p~a = (m~a,\vec{0}), \quad p~b = (E~b, \vec{p}), \quad p~c = (E~c, -\vec{p}) \]
+Thus the decay is back-to-back, and 
+\[ \dd{\Gamma} = \frac{1}{2m~a} \abs{\mathcal{M}}^2 \frac{1}{4 E~b E~c} \frac{1}{(2 \pi)^2} \delta(m~a - E~b -E~c) \abs{\vec{p}}^2 \dd{\abs{\vec{p}}} \dd{\Omega} \]
+But
+\[ \abs{\vec{p}} \dd{\abs{\vec{p}}} = E~b \dd{E~b} = E~c \dd{E~c} = \frac{E~b E~c}{E~b + E~c} \dd{(E~b + E~c)} \dd{\Omega} \] 
+\begin{equation}
+  \Gamma = \int \frac{1}{32 m~a^2 \pi^2} \abs{\mathcal{M}}^2 \abs{\vec{p}} \dd{\Omega}
+\end{equation}
+And, summing over all the possible decay processes to get the total decay rate,
+\[ \Gamma~{tot} = \sum_i \Gamma_i \]
+and the inverse of the total width, $\Gamma^{-1}~{tot}$ gives the
+lifetime of the particle. If the number of particles is $N~a$, then
+\[ \Gamma~{tot} = - \frac{1}{N~a} \dv{N~a}{t} \implies N~a(t) = N~a(0) \exp(- \Gamma~{tot} t) \]
+ 
+\section{Trace identities for the $\gamma$-matrices}
+\label{sec:trace-ident-gamma}
+
+\begin{subequations}
+  \begin{align}
+    \tr( \vec{1} ) &= 4 \\
+    \tr( \gamma^{\mu} \gamma^{\nu} ) &= \half \tr( \gamma^{\mu} \gamma^{\nu} + \gamma^{\nu} \gamma^{\mu} ) = \half \tr(2 g^{\mu \nu}) \nonumber \\ &= g^{\mu \nu} \tr(\vec{1} ) = 4 g^{\mu \nu} \\
+    \tr( \gamma^{\mu} \gamma^{\nu} \gamma^{\lambda}) &= \tr(\gamma^5 \gamma^5 \gamma^{\mu} \gamma^{\nu} \gamma^{\lambda}) = \tr(\gamma^5 \gamma^{\mu} \gamma^{\nu} \gamma^{\lambda} \gamma^5) \nonumber\\
+&= - \tr( \gamma^5 \gamma^5 \gamma^{\mu} \gamma^{\nu} \gamma^{\lambda}) = 0 \\
+    \tr(\gamma^{\mu} \gamma^{\nu} \gamma^{\lambda} \gamma^{\kappa}) &= 4 \qty(g^{\mu \nu}g^{\lambda \kappa}-h^{\mu \lambda} g^{\nu \kappa} + g^{\mu \kappa} g^{\nu \lambda}) \\
+    \tr(\gamma^5 \gamma^{\mu} \gamma^{\nu} \gamma^{\lambda} \gamma^{\kappa}) &= - 4 i \epsilon^{\mu \nu \lambda \kappa}
+  \end{align}
+\end{subequations}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../project"
+%%% End:
