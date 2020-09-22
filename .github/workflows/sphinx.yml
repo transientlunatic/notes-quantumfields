@@ -2,7 +2,7 @@ name: Sphinx site build
 
 on:
   push:
-    branches: [ master, sphinx ]
+    branches: [ master, draft ]
 
 jobs:
   build:
